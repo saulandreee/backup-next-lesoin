@@ -1,6 +1,9 @@
 import { Karla, Marcellus, Roboto } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Scrolltop from "@/components/Scrolltop";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 // import { ThemeProvider } from "@/components/remap";
 
 export const karla = Karla({ subsets: ["latin"], variable: "--font-karla", weight: "400" });
@@ -17,7 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-roboto antialiased tracking-wide", karla.variable, marcellus.variable, roboto.variable)}>
         {/* <ThemeProvider>{children}</ThemeProvider> */}
+        <Navbar />
         {children}
+        <Footer />
+        <Scrolltop />
       </body>
     </html>
   );

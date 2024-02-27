@@ -23,7 +23,8 @@ module.exports = {
           brown: "#6A6560",
           "dark-brown": "#474443",
           dark: "#2D2A27",
-          darkest: "#2A2D2C",
+          darker: "#2A2D2C",
+          darkest: "#1F1E1D",
         },
       },
       keyframes: {
