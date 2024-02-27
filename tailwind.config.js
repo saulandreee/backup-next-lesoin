@@ -41,7 +41,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        roboto: ["var(--font-roboto)", ...fontFamily.sans],
         karla: ["var(--font-karla)", ...fontFamily.sans],
         marcellus: ["var(--font-marcellus)", ...fontFamily.sans],
       },
