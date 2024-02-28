@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
         {/* <ThemeProvider>{children}</ThemeProvider> */}
         <Navbar />
         {children}
-        <Footer />
         <Scrolltop />
+        <Footer />
       </body>
     </html>
   );

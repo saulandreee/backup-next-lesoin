@@ -229,7 +229,7 @@ export default function Navbar() {
                 {
                   text: "Chromosome IV",
                   end: true,
-                  href: "/projects/cromosome-iv",
+                  href: "/projects/chromosome-iv",
                 },
                 {
                   text: "SlimDrip",
@@ -418,7 +418,7 @@ export default function Navbar() {
         {
           text: "Sagging Skin",
           end: true,
-          href: "/projects/sagging-skinn",
+          href: "/projects/sagging-skin",
         },
         {
           text: "Sagging Breast",
@@ -431,9 +431,9 @@ export default function Navbar() {
           href: "/projects/crows-feet-and-wrinkles",
         },
         {
-          text: "Droppy Eyelids",
+          text: "Droopy Eyelids",
           end: true,
-          href: "/projects/droppy-eyelids",
+          href: "/projects/droopy-eyelids",
         },
         {
           text: "Eyebags",
@@ -470,13 +470,63 @@ export default function Navbar() {
   });
 
   const productsRef = useRef();
-  useEffect(() => {
-    console.log(productsRef.current);
-  }, []);
+
+  // generating projects.json data
+  // useEffect(() => {
+  //   var temp = {};
+  //   var tempKeysToSearch = ["treatment", "solutions"];
+  //   tempKeysToSearch.forEach((nav) => {
+  //     if (!navigation[nav].end) {
+  //       navigation[nav].child.forEach((nav_child) => {
+  //         if (!nav_child.end) {
+  //           nav_child.child.forEach((second_child) => {
+  //             if (!second_child.end) {
+  //               second_child.child.forEach((third_child) => {
+  //                 temp[third_child.href.split("/projects/").pop()] = {
+  //                   page_title: third_child.text,
+  //                   page_description: "",
+  //                   page_keywords: "",
+  //                   href: third_child.href,
+  //                   title: third_child.text,
+  //                 };
+  //               });
+  //             } else {
+  //               temp[second_child.href.split("/projects/").pop()] = {
+  //                 page_title: second_child.text,
+  //                 page_description: "",
+  //                 page_keywords: "",
+  //                 href: nav_child.href,
+  //                 title: second_child.text,
+  //               };
+  //             }
+  //           });
+  //         } else {
+  //           temp[nav_child.href.split("/projects/").pop()] = {
+  //             page_title: nav_child.text,
+  //             page_description: "",
+  //             page_keywords: "",
+  //             href: nav_child.href,
+  //             title: nav_child.text,
+  //           };
+  //         }
+  //       });
+  //     } else {
+  //       temp[navigation[nav].href.split("/projects/").pop()] = {
+  //         page_title: navigation[nav].text,
+  //         page_description: "",
+  //         page_keywords: "",
+  //         href: navigation[nav].href,
+  //         title: navigation[nav].text,
+  //       };
+  //     }
+  //   });
+
+  //   console.log(temp);
+  // }, []);
 
   return (
     <div className="bg-base-darker py-4">
-      <div className="w-full max-w-[1200px] px-5 mx-auto flex items-center">
+      <div className="max-w-[1200px] px-5 mx-auto flex items-center">
         <Link href={"/"}>
           <Image
             src={"/lesoin-icon.png"}
@@ -615,39 +665,6 @@ export default function Navbar() {
                 <Link href={navigation["online-booking"].href}>{navigation["online-booking"].text}</Link>
               </NavigationMenuTrigger>
             </NavigationMenuItem>
-
-            {/* {navigation.map((nav_menu, index) => {
-              return (
-                <NavigationMenuItem key={index}>
-                  {nav_menu.end ? (
-                    <>
-                      <NavigationMenuTrigger
-                        className=""
-                        withChild={false}
-                      >
-                        <Link href={nav_menu.href}>{nav_menu.text}</Link>
-                      </NavigationMenuTrigger>
-                    </>
-                  ) : (
-                    <>
-                      <NavigationMenuTrigger
-                        className=""
-                        withChild={true}
-                      >
-                        {nav_menu.text}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <NavigationMenuLink>
-                          <div>
-                            <p>{index + 1}</p>
-                          </div>
-                        </NavigationMenuLink>
-                      </NavigationMenuContent>
-                    </>
-                  )}
-                </NavigationMenuItem>
-              );
-            })} */}
           </NavigationMenuList>
         </NavigationMenu>
 
