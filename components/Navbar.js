@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,7 +9,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
+  NavigationSubMenu,
+  NavigationSubMenuContent,
+  NavigationSubMenuLink,
+  NavigationSubMenuTrigger,
   navigationMenuTriggerStyle,
+  navigationSubMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import Image from "next/image";
 import Link from "next/link";
@@ -464,6 +469,11 @@ export default function Navbar() {
     },
   });
 
+  const productsRef = useRef();
+  useEffect(() => {
+    console.log(productsRef.current);
+  }, []);
+
   return (
     <div className="bg-base-darker py-4">
       <div className="w-full max-w-[1200px] px-5 mx-auto flex items-center">
@@ -476,7 +486,7 @@ export default function Navbar() {
             loading="eager"
           />
         </Link>
-        <NavigationMenu className="flex-1 font-karla">
+        <NavigationMenu className="flex-1 font-karla text-slate-50">
           <NavigationMenuList className="gap-2">
             <NavigationMenuItem>
               <Link
@@ -485,20 +495,20 @@ export default function Navbar() {
                 passHref
                 className=""
               >
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>{navigation.home.text}</NavigationMenuLink>
+                <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>{navigation.home.text}</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuTrigger
-                className="rounded-none"
+                className=""
                 withChild={true}
               >
                 {navigation.treatment.text}
               </NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="left-1/2 -translate-x-1/2">
                 <NavigationMenuLink>
-                  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown">
+                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown rounded">
                     {navigation.treatment.child.map((treatment_child) => {
                       return (
                         <div className="">
@@ -506,23 +516,20 @@ export default function Navbar() {
                           <div className="">
                             {treatment_child.child.map((treatment_second_child) => {
                               return (
-                                <>
-                                  {treatment_second_child.child ? (
-                                    <NavigationMenu
-                                      className="flex-1 z-[20] block relative font-roboto "
-                                      viewPortClass="origin-top-center z-[30] absolute max-w-[200px] overflow-y-auto overflow-x-hidden"
-                                    >
-                                      <NavigationMenuList className="justify-start">
+                                <NavigationSubMenu className="font-roboto">
+                                  <NavigationMenuList className="justify-start">
+                                    <>
+                                      {treatment_second_child.child ? (
                                         <NavigationMenuItem className="w-full">
-                                          <NavigationMenuTrigger
-                                            className="flex w-full h-auto bg-transparent justify-start select-none space-y-1 rounded-md leading-none no-underline outline-none transition-colors hover:bg-base-cream/50 normal-case tracking-normal text-sm"
+                                          <NavigationSubMenuTrigger
+                                            className="w-full"
                                             withChild={true}
                                           >
                                             {treatment_second_child.text}
-                                          </NavigationMenuTrigger>
+                                          </NavigationSubMenuTrigger>
 
-                                          <NavigationMenuContent className="relative bg-base-brown w-full">
-                                            <ul className="w-[250px]">
+                                          <NavigationSubMenuContent className="">
+                                            <ul className="w-[250px] relative z-30 max-h-96 overflow-y-scroll">
                                               {treatment_second_child.child.map((treatment_third_child, index) => {
                                                 return (
                                                   <ListItem
@@ -532,19 +539,21 @@ export default function Navbar() {
                                                 );
                                               })}
                                             </ul>
-                                          </NavigationMenuContent>
+                                          </NavigationSubMenuContent>
                                         </NavigationMenuItem>
-                                      </NavigationMenuList>
-                                    </NavigationMenu>
-                                  ) : (
-                                    <>
-                                      <ListItem
-                                        title={treatment_second_child.text}
-                                        href={treatment_second_child.href}
-                                      ></ListItem>
+                                      ) : (
+                                        <NavigationMenuItem className="w-full">
+                                          <NavigationSubMenuLink
+                                            className={cn(navigationSubMenuTriggerStyle())}
+                                            href={treatment_second_child.href}
+                                          >
+                                            {treatment_second_child.text}
+                                          </NavigationSubMenuLink>
+                                        </NavigationMenuItem>
+                                      )}
                                     </>
-                                  )}
-                                </>
+                                  </NavigationMenuList>
+                                </NavigationSubMenu>
                               );
                             })}
                           </div>
@@ -556,9 +565,9 @@ export default function Navbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
+            <NavigationMenuItem ref={productsRef}>
               <NavigationMenuTrigger
-                className="rounded-none"
+                className=""
                 withChild={true}
               >
                 {navigation.products.text}
@@ -566,9 +575,9 @@ export default function Navbar() {
 
               <NavigationMenuContent>
                 <NavigationMenuLink>
-                  <ul className="grid gap-2 p-6 w- bg-base-brown">
+                  <ul className="grid gap-2 p-4 w-[200px] bg-base-brown rounded">
                     {navigation.products.child.map((products_child) => {
-                      return <div className="">{products_child.text}</div>;
+                      return <ListItem title={products_child.text}></ListItem>;
                     })}
                   </ul>
                 </NavigationMenuLink>
@@ -577,23 +586,21 @@ export default function Navbar() {
 
             <NavigationMenuItem>
               <NavigationMenuTrigger
-                className="rounded-none"
+                className=""
                 withChild={true}
               >
                 {navigation.solutions.text}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <NavigationMenuLink>
-                  <div>
-                    <p>{3}</p>
-                  </div>
+                  <ul className="rounded bg-base-brown">3</ul>
                 </NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuTrigger
-                className="rounded-none"
+                className=""
                 withChild={false}
               >
                 <Link href={navigation["about-us"].href}>{navigation["about-us"].text}</Link>
@@ -602,7 +609,7 @@ export default function Navbar() {
 
             <NavigationMenuItem>
               <NavigationMenuTrigger
-                className="rounded-none"
+                className=""
                 withChild={false}
               >
                 <Link href={navigation["online-booking"].href}>{navigation["online-booking"].text}</Link>
@@ -615,7 +622,7 @@ export default function Navbar() {
                   {nav_menu.end ? (
                     <>
                       <NavigationMenuTrigger
-                        className="rounded-none"
+                        className=""
                         withChild={false}
                       >
                         <Link href={nav_menu.href}>{nav_menu.text}</Link>
@@ -624,7 +631,7 @@ export default function Navbar() {
                   ) : (
                     <>
                       <NavigationMenuTrigger
-                        className="rounded-none"
+                        className=""
                         withChild={true}
                       >
                         {nav_menu.text}

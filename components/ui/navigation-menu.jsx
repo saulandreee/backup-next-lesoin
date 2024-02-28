@@ -12,7 +12,6 @@ const NavigationMenu = React.forwardRef(({ className, children, viewPortClass, .
     {...props}
   >
     {children}
-    <NavigationMenuViewport className={viewPortClass} />
   </NavigationMenuPrimitive.Root>
 ));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
@@ -26,10 +25,17 @@ const NavigationMenuList = React.forwardRef(({ className, ...props }, ref) => (
 ));
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item;
+const NavigationMenuItem = React.forwardRef(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Item
+    ref={ref}
+    className={cn("relative", className)}
+    {...props}
+  />
+));
+NavigationMenuItem.displayName = "NavigationMenuItem";
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 items-center justify-center rounded-md px-2 py-2 text-sm font-medium transition-colors bg-base-darker hover:bg-base-darker/10 text-stone-50 uppercase text-xs tracking-[2px]"
+  "group inline-flex h-10 items-center justify-center rounded-md px-2 py-2 text-sm font-medium transition-colors bg-base-darker hover:bg-base-darker/10 text-stone-50 uppercase text-xs tracking-[2px] rounded hover:bg-base-dark-brown/50 data-[state=open]:bg-base-dark-brown/50"
 );
 
 const NavigationMenuTrigger = React.forwardRef(({ className, withChild, children, ...props }, ref) => (
@@ -58,7 +64,7 @@ const NavigationMenuContent = React.forwardRef(({ className, ...props }, ref) =>
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "left-0 top-0 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto",
+      "left-0 top-full mt-1 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto",
       className
     )}
     {...props}
@@ -96,8 +102,60 @@ const NavigationMenuIndicator = React.forwardRef(({ className, ...props }, ref) 
 ));
 NavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;
 
+const NavigationSubMenu = React.forwardRef(({ className, children, viewPortClass, ...props }, ref) => (
+  <NavigationMenuPrimitive.Root
+    ref={ref}
+    className={cn("relative z-20 w-full", className)}
+    {...props}
+  >
+    {children}
+  </NavigationMenuPrimitive.Root>
+));
+NavigationSubMenu.displayName = "NavigationSubMenu";
+
+const NavigationSubMenuContent = React.forwardRef(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Content
+    ref={ref}
+    className={cn(
+      "left-full top-0 relative bg-blue-500 ml-1 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto",
+      className
+    )}
+    {...props}
+  />
+));
+NavigationSubMenuContent.displayName = "NavigationSubMenuContent";
+
+const NavigationSubMenuLink = NavigationMenuPrimitive.Link;
+
+const navigationSubMenuTriggerStyle = cva(
+  "group inline-flex w-full items-center text-left rounded-md px-2 py-2 text-sm font-medium transition-colors bg-base-brown hover:bg-base-cream/50 rounded data-[state=open]:bg-base-cream/50"
+);
+
+const NavigationSubMenuTrigger = React.forwardRef(({ className, withChild, children, ...props }, ref) => (
+  <NavigationMenuPrimitive.Trigger
+    ref={ref}
+    className={cn(navigationSubMenuTriggerStyle(), "group", className)}
+    {...props}
+  >
+    {withChild ? (
+      <>
+        {children}
+        {""}
+        <ChevronDown
+          className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+          aria-hidden="true"
+        />
+      </>
+    ) : (
+      <>{children}</>
+    )}
+  </NavigationMenuPrimitive.Trigger>
+));
+NavigationSubMenuTrigger.displayName = "NavigationSubMenuTrigger";
+
 export {
   navigationMenuTriggerStyle,
+  navigationSubMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
@@ -106,4 +164,8 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
+  NavigationSubMenu,
+  NavigationSubMenuLink,
+  NavigationSubMenuTrigger,
+  NavigationSubMenuContent,
 };
