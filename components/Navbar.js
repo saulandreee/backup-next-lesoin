@@ -561,61 +561,59 @@ export default function Navbar() {
                   {navigation.treatment.text}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="left-1/2 -translate-x-1/2">
-                  <NavigationMenuLink>
-                    <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown rounded">
-                      {navigation.treatment.child.map((treatment_child) => {
-                        return (
+                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown rounded">
+                    {navigation.treatment.child.map((treatment_child) => {
+                      return (
+                        <div className="">
+                          <p className="font-semibold mb-2 underline underline-offset-2 px-2">{treatment_child.text}</p>
                           <div className="">
-                            <p className="font-semibold mb-2 underline underline-offset-2 px-2">{treatment_child.text}</p>
-                            <div className="">
-                              {treatment_child.child.map((treatment_second_child) => {
-                                return (
-                                  <NavigationSubMenu className="font-roboto">
-                                    <NavigationMenuList className="justify-start">
-                                      <>
-                                        {treatment_second_child.child ? (
-                                          <NavigationMenuItem className="w-full">
-                                            <NavigationSubMenuTrigger
-                                              className="w-full"
-                                              withChild={true}
-                                            >
-                                              {treatment_second_child.text}
-                                            </NavigationSubMenuTrigger>
+                            <NavigationSubMenu className="font-roboto z-[20]">
+                              <NavigationMenuList className="flex-col justify-start">
+                                {treatment_child.child.map((treatment_second_child) => {
+                                  return (
+                                    <>
+                                      {treatment_second_child.child ? (
+                                        <NavigationMenuItem className="w-full">
+                                          <NavigationSubMenuTrigger
+                                            className="w-full"
+                                            withChild={true}
+                                          >
+                                            {treatment_second_child.text}
+                                          </NavigationSubMenuTrigger>
 
-                                            <NavigationSubMenuContent className="">
-                                              <ul className="w-[250px] relative z-30 max-h-96 overflow-y-scroll">
-                                                {treatment_second_child.child.map((treatment_third_child, index) => {
-                                                  return (
-                                                    <ListItem
-                                                      href={treatment_third_child.href}
-                                                      title={treatment_third_child.text}
-                                                    />
-                                                  );
-                                                })}
-                                              </ul>
-                                            </NavigationSubMenuContent>
-                                          </NavigationMenuItem>
-                                        ) : (
-                                          <NavigationMenuItem className="w-full">
-                                            <NavigationSubMenuLink
-                                              className={cn(navigationSubMenuTriggerStyle())}
-                                              href={treatment_second_child.href}
-                                            >
-                                              {treatment_second_child.text}
-                                            </NavigationSubMenuLink>
-                                          </NavigationMenuItem>
-                                        )}
-                                      </>
-                                    </NavigationMenuList>
-                                  </NavigationSubMenu>
-                                );
-                              })}
-                            </div>
+                                          <NavigationSubMenuContent className="!z-30">
+                                            <ul className="w-[250px] relative  max-h-96 overflow-y-scroll">
+                                              {treatment_second_child.child.map((treatment_third_child, index) => {
+                                                return (
+                                                  <ListItem
+                                                    href={treatment_third_child.href}
+                                                    title={treatment_third_child.text}
+                                                  />
+                                                );
+                                              })}
+                                            </ul>
+                                          </NavigationSubMenuContent>
+                                        </NavigationMenuItem>
+                                      ) : (
+                                        <NavigationMenuItem className="w-full">
+                                          <NavigationSubMenuLink
+                                            className={cn(navigationSubMenuTriggerStyle())}
+                                            href={treatment_second_child.href}
+                                          >
+                                            {treatment_second_child.text}
+                                          </NavigationSubMenuLink>
+                                        </NavigationMenuItem>
+                                      )}
+                                    </>
+                                  );
+                                })}
+                              </NavigationMenuList>
+                            </NavigationSubMenu>
                           </div>
-                        );
-                      })}
-                    </ul>
-                  </NavigationMenuLink>
+                        </div>
+                      );
+                    })}
+                  </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 

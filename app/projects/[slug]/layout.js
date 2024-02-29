@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import { getSingleProject } from "./readProject";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -12,11 +13,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
   // // optionally access and extend (rather than replace) parent metadata
   // const previousImages = (await parent).openGraph?.images || [];
 
+  if (!project) notFound();
+
   return {
     title: project.page_title,
-    // openGraph: {
-    //   images: ["/some-specific-page-image.jpg", ...previousImages],
-    // },
     description: project.page_description,
   };
 }
