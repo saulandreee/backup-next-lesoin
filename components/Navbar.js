@@ -24,6 +24,8 @@ import { List, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "./ui/menubar";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import MobileNav from "./MobileNav";
 
 export default function Navbar() {
   const [navigation, setNavigation] = useState({
@@ -469,6 +471,8 @@ export default function Navbar() {
     },
   });
 
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+
   const productsRef = useRef();
 
   // generating projects.json data
@@ -523,161 +527,178 @@ export default function Navbar() {
 
   //   console.log(temp);
   // }, []);
+  if (isDesktop) {
+    return (
+      <div className="bg-base-darker py-4">
+        <div className="max-w-[1200px] px-5 mx-auto flex items-center">
+          <Link href={"/"}>
+            <Image
+              src={"/lesoin-icon.png"}
+              width={160}
+              height={64}
+              priority={true}
+              loading="eager"
+            />
+          </Link>
+          <NavigationMenu className="flex-1 font-karla text-slate-50">
+            <NavigationMenuList className="gap-2">
+              <NavigationMenuItem>
+                <Link
+                  href={navigation.home.href}
+                  legacyBehavior
+                  passHref
+                  className=""
+                >
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>{navigation.home.text}</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
 
-  return (
-    <div className="bg-base-darker py-4">
-      <div className="max-w-[1200px] px-5 mx-auto flex items-center">
-        <Link href={"/"}>
-          <Image
-            src={"/lesoin-icon.png"}
-            width={160}
-            height={64}
-            priority={true}
-            loading="eager"
-          />
-        </Link>
-        <NavigationMenu className="flex-1 font-karla text-slate-50">
-          <NavigationMenuList className="gap-2">
-            <NavigationMenuItem>
-              <Link
-                href={navigation.home.href}
-                legacyBehavior
-                passHref
-                className=""
-              >
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>{navigation.home.text}</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className=""
-                withChild={true}
-              >
-                {navigation.treatment.text}
-              </NavigationMenuTrigger>
-              <NavigationMenuContent className="left-1/2 -translate-x-1/2">
-                <NavigationMenuLink>
-                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown rounded">
-                    {navigation.treatment.child.map((treatment_child) => {
-                      return (
-                        <div className="">
-                          <p className="font-semibold mb-2 underline underline-offset-2 px-2">{treatment_child.text}</p>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className=""
+                  withChild={true}
+                >
+                  {navigation.treatment.text}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="left-1/2 -translate-x-1/2">
+                  <NavigationMenuLink>
+                    <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown rounded">
+                      {navigation.treatment.child.map((treatment_child) => {
+                        return (
                           <div className="">
-                            {treatment_child.child.map((treatment_second_child) => {
-                              return (
-                                <NavigationSubMenu className="font-roboto">
-                                  <NavigationMenuList className="justify-start">
-                                    <>
-                                      {treatment_second_child.child ? (
-                                        <NavigationMenuItem className="w-full">
-                                          <NavigationSubMenuTrigger
-                                            className="w-full"
-                                            withChild={true}
-                                          >
-                                            {treatment_second_child.text}
-                                          </NavigationSubMenuTrigger>
+                            <p className="font-semibold mb-2 underline underline-offset-2 px-2">{treatment_child.text}</p>
+                            <div className="">
+                              {treatment_child.child.map((treatment_second_child) => {
+                                return (
+                                  <NavigationSubMenu className="font-roboto">
+                                    <NavigationMenuList className="justify-start">
+                                      <>
+                                        {treatment_second_child.child ? (
+                                          <NavigationMenuItem className="w-full">
+                                            <NavigationSubMenuTrigger
+                                              className="w-full"
+                                              withChild={true}
+                                            >
+                                              {treatment_second_child.text}
+                                            </NavigationSubMenuTrigger>
 
-                                          <NavigationSubMenuContent className="">
-                                            <ul className="w-[250px] relative z-30 max-h-96 overflow-y-scroll">
-                                              {treatment_second_child.child.map((treatment_third_child, index) => {
-                                                return (
-                                                  <ListItem
-                                                    href={treatment_third_child.href}
-                                                    title={treatment_third_child.text}
-                                                  />
-                                                );
-                                              })}
-                                            </ul>
-                                          </NavigationSubMenuContent>
-                                        </NavigationMenuItem>
-                                      ) : (
-                                        <NavigationMenuItem className="w-full">
-                                          <NavigationSubMenuLink
-                                            className={cn(navigationSubMenuTriggerStyle())}
-                                            href={treatment_second_child.href}
-                                          >
-                                            {treatment_second_child.text}
-                                          </NavigationSubMenuLink>
-                                        </NavigationMenuItem>
-                                      )}
-                                    </>
-                                  </NavigationMenuList>
-                                </NavigationSubMenu>
-                              );
-                            })}
+                                            <NavigationSubMenuContent className="">
+                                              <ul className="w-[250px] relative z-30 max-h-96 overflow-y-scroll">
+                                                {treatment_second_child.child.map((treatment_third_child, index) => {
+                                                  return (
+                                                    <ListItem
+                                                      href={treatment_third_child.href}
+                                                      title={treatment_third_child.text}
+                                                    />
+                                                  );
+                                                })}
+                                              </ul>
+                                            </NavigationSubMenuContent>
+                                          </NavigationMenuItem>
+                                        ) : (
+                                          <NavigationMenuItem className="w-full">
+                                            <NavigationSubMenuLink
+                                              className={cn(navigationSubMenuTriggerStyle())}
+                                              href={treatment_second_child.href}
+                                            >
+                                              {treatment_second_child.text}
+                                            </NavigationSubMenuLink>
+                                          </NavigationMenuItem>
+                                        )}
+                                      </>
+                                    </NavigationMenuList>
+                                  </NavigationSubMenu>
+                                );
+                              })}
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </ul>
-                </NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+                        );
+                      })}
+                    </ul>
+                  </NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-            <NavigationMenuItem ref={productsRef}>
-              <NavigationMenuTrigger
-                className=""
-                withChild={true}
-              >
-                {navigation.products.text}
-              </NavigationMenuTrigger>
+              <NavigationMenuItem ref={productsRef}>
+                <NavigationMenuTrigger
+                  className=""
+                  withChild={true}
+                >
+                  {navigation.products.text}
+                </NavigationMenuTrigger>
 
-              <NavigationMenuContent>
-                <NavigationMenuLink>
-                  <ul className="grid gap-2 p-4 w-[200px] bg-base-brown rounded">
-                    {navigation.products.child.map((products_child) => {
-                      return <ListItem title={products_child.text}></ListItem>;
-                    })}
-                  </ul>
-                </NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>
+                    <ul className="grid gap-2 p-4 w-[200px] bg-base-brown rounded">
+                      {navigation.products.child.map((products_child) => {
+                        return (
+                          <ListItem
+                            href={products_child.href}
+                            title={products_child.text}
+                          ></ListItem>
+                        );
+                      })}
+                    </ul>
+                  </NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className=""
-                withChild={true}
-              >
-                {navigation.solutions.text}
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <NavigationMenuLink>
-                  <ul className="rounded bg-base-brown">3</ul>
-                </NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className=""
+                  withChild={true}
+                >
+                  {navigation.solutions.text}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>
+                    <ul className="rounded bg-base-brown w-[250px] max-h-[400px] overflow-y-scroll">
+                      {navigation.solutions.child.map((solutions_child) => {
+                        return (
+                          <ListItem
+                            href={solutions_child.href}
+                            title={solutions_child.text}
+                          ></ListItem>
+                        );
+                      })}
+                    </ul>
+                  </NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className=""
-                withChild={false}
-              >
-                <Link href={navigation["about-us"].href}>{navigation["about-us"].text}</Link>
-              </NavigationMenuTrigger>
-            </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className=""
+                  withChild={false}
+                >
+                  <Link href={navigation["about-us"].href}>{navigation["about-us"].text}</Link>
+                </NavigationMenuTrigger>
+              </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className=""
-                withChild={false}
-              >
-                <Link href={navigation["online-booking"].href}>{navigation["online-booking"].text}</Link>
-              </NavigationMenuTrigger>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className=""
+                  withChild={false}
+                >
+                  <Link href={navigation["online-booking"].href}>{navigation["online-booking"].text}</Link>
+                </NavigationMenuTrigger>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
 
-        <Button
-          size="icon"
-          variant="ghost"
-          className="text-stone-50"
-        >
-          <Search size={18} />
-        </Button>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="text-stone-50"
+          >
+            <Search size={18} />
+          </Button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return <MobileNav navigation={navigation} />;
 }
 
 const ListItem = React.forwardRef(({ className, title, children, ...props }, ref) => {

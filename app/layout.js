@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
       <body className={cn("min-h-screen bg-background font-roboto antialiased tracking-wide", karla.variable, marcellus.variable, roboto.variable)}>
         {/* <ThemeProvider>{children}</ThemeProvider> */}
         <Navbar />
+
         {children}
         <Scrolltop />
         <Footer />
