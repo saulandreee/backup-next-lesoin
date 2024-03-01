@@ -102,7 +102,7 @@ const NavigationMenuIndicator = React.forwardRef(({ className, ...props }, ref) 
 ));
 NavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;
 
-const NavigationSubMenu = React.forwardRef(({ className, children, viewPortClass, ...props }, ref) => (
+const NavigationSubMenu = React.forwardRef(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn("relative z-20 w-full", className)}
@@ -127,6 +127,15 @@ NavigationSubMenuContent.displayName = "NavigationSubMenuContent";
 
 const NavigationSubMenuLink = NavigationMenuPrimitive.Link;
 
+const NavigationSubMenuItem = React.forwardRef(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Item
+    ref={ref}
+    className={cn("relative z-20", className)}
+    {...props}
+  />
+));
+NavigationSubMenuItem.displayName = "NavigationSubMenuItem";
+
 const navigationSubMenuTriggerStyle = cva(
   "group inline-flex w-full items-center text-left rounded-md px-2 py-2 text-sm font-medium transition-colors bg-base-brown hover:bg-base-cream/50 rounded data-[state=open]:bg-base-cream/50"
 );
@@ -142,7 +151,7 @@ const NavigationSubMenuTrigger = React.forwardRef(({ className, withChild, child
         {children}
         {""}
         <ChevronDown
-          className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+          className="relative top-[1px]  ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
           aria-hidden="true"
         />
       </>
@@ -168,4 +177,5 @@ export {
   NavigationSubMenuLink,
   NavigationSubMenuTrigger,
   NavigationSubMenuContent,
+  NavigationSubMenuItem,
 };

@@ -138,7 +138,7 @@ export default function MobileNav({ navigation }) {
                         <Button
                           size="icon"
                           variant="ghost"
-                          className=""
+                          className="bg-base-cream/20 rounded-lg"
                           onClick={resetNav}
                         >
                           <ChevronLeft
@@ -146,7 +146,12 @@ export default function MobileNav({ navigation }) {
                             strokeWidth={3}
                           />
                         </Button>
-                        {history.firstNav.data.text}
+                        <button
+                          className="text-left"
+                          onClick={resetNav}
+                        >
+                          {history.firstNav.data.text}
+                        </button>
                       </div>
                       <div className="py-4 flex flex-col gap-1">
                         {history.firstNav.data.child.map((secondNav) => {
@@ -202,7 +207,7 @@ export default function MobileNav({ navigation }) {
                         <Button
                           size="icon"
                           variant="ghost"
-                          className=""
+                          className="bg-base-cream/20 rounded-lg"
                           onClick={() => {
                             setShowNav("second");
                             setHistory({ ...history, secondNav: { slug: "", data: {} } });
@@ -213,7 +218,13 @@ export default function MobileNav({ navigation }) {
                             strokeWidth={3}
                           />
                         </Button>
-                        {history.secondNav.data.text}
+
+                        <button
+                          className="text-left"
+                          onClick={resetNav}
+                        >
+                          {history.secondNav.data.text}
+                        </button>
                       </div>
                       <div className="py-4 flex flex-col gap-1">
                         {history.secondNav.data.child.map((thirdNav) => (
