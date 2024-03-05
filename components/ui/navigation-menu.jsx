@@ -117,7 +117,7 @@ const NavigationSubMenuContent = React.forwardRef(({ className, ...props }, ref)
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "left-full top-0 relative bg-blue-500 ml-1 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-bottom-52 data-[motion=from-start]:slide-in-from-top-52 data-[motion=to-end]:slide-out-to-bottom-52 data-[motion=to-start]:slide-out-to-top-52 md:absolute md:w-auto",
+      "left-full top-0 relative rounded-lg bg-base-dark-brown ml-1 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-bottom-52 data-[motion=from-start]:slide-in-from-top-52 data-[motion=to-end]:slide-out-to-bottom-52 data-[motion=to-start]:slide-out-to-top-52 md:absolute md:w-auto",
       className
     )}
     {...props}

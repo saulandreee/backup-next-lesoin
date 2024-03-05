@@ -591,7 +591,10 @@ export default function Navbar() {
                                             </NavigationSubMenuTrigger>
 
                                             <NavigationSubMenuContent className="">
-                                              <ul className="w-[250px] relative max-h-96 overflow-y-scroll">
+                                              <ul
+                                                className="py-1.5 px-2 w-[250px] relative max-h-96 overflow-y-scroll"
+                                                style={{ zIndex: 40 }}
+                                              >
                                                 {treatment_second_child.child.map((treatment_third_child, index) => {
                                                   return (
                                                     <ListItem
