@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { getSingleProject } from "./readProject";
+import { getSingleProject } from "../../../lib/projects";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -8,15 +8,16 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const slug = params.slug;
 
   // fetch data
-  const project = getSingleProject(slug);
+  const project = await getSingleProject(slug);
 
   // // optionally access and extend (rather than replace) parent metadata
   // const previousImages = (await parent).openGraph?.images || [];
 
+  // console.log(project);
   if (!project) notFound();
 
   return {
-    title: project.page_title,
+    title: `${project.page_title} | Le Soin`,
     description: project.page_description,
   };
 }
