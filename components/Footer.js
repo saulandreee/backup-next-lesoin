@@ -22,6 +22,7 @@ export default function Footer() {
           quality={100}
           loading="eager"
           priority
+          alt="lesoin-img"
         />
       </Link>
       <div className="mb-8 lg:mb-10">

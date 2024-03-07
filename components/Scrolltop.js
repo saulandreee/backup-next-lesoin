@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { ChevronUp } from "lucide-react";
 
 export default function Scrolltop() {
-  const [windowTop, setWindowTop] = useState(typeof window.scrollY);
+  const [windowTop, setWindowTop] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

@@ -539,6 +539,7 @@ export default function Navbar() {
               height={64}
               priority={true}
               loading="eager"
+              alt="lesoin-logo"
             />
           </Link>
           <NavigationMenu className="flex-1 font-karla text-slate-50">
@@ -568,6 +569,7 @@ export default function Navbar() {
                         <div
                           className=""
                           style={{ zIndex: 20 - index }}
+                          key={index}
                         >
                           <p className="font-semibold mb-2 underline underline-offset-2 px-2">{treatment_child.text}</p>
 
@@ -595,11 +597,12 @@ export default function Navbar() {
                                                 className="py-1.5 px-2 w-[250px] relative max-h-96 overflow-y-scroll"
                                                 style={{ zIndex: 40 }}
                                               >
-                                                {treatment_second_child.child.map((treatment_third_child, index) => {
+                                                {treatment_second_child.child.map((treatment_third_child, third_index) => {
                                                   return (
                                                     <ListItem
                                                       href={treatment_third_child.href}
                                                       title={treatment_third_child.text}
+                                                      key={third_index}
                                                     />
                                                   );
                                                 })}
@@ -641,9 +644,10 @@ export default function Navbar() {
                 <NavigationMenuContent>
                   <NavigationMenuLink>
                     <ul className="grid gap-2 p-4 w-[200px] bg-base-brown rounded">
-                      {navigation.products.child.map((products_child) => {
+                      {navigation.products.child.map((products_child, product_index) => {
                         return (
                           <ListItem
+                            key={product_index}
                             href={products_child.href}
                             title={products_child.text}
                           ></ListItem>
@@ -664,9 +668,10 @@ export default function Navbar() {
                 <NavigationMenuContent>
                   <NavigationMenuLink>
                     <ul className="rounded bg-base-brown w-[250px] max-h-[400px] overflow-y-scroll">
-                      {navigation.solutions.child.map((solutions_child) => {
+                      {navigation.solutions.child.map((solutions_child, solution_index) => {
                         return (
                           <ListItem
+                            key={solution_index}
                             href={solutions_child.href}
                             title={solutions_child.text}
                           ></ListItem>

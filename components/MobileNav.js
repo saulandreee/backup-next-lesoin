@@ -46,6 +46,7 @@ export default function MobileNav({ navigation }) {
               height={48}
               priority={true}
               loading="eager"
+              alt="lesoin-logo"
             />
           </Link>
           <Drawer
@@ -69,6 +70,7 @@ export default function MobileNav({ navigation }) {
                 <DrawerClose>
                   <Link href={"/"}>
                     <Image
+                      alt="lesoin-image"
                       src={"/lesoin-icon.png"}
                       width={128}
                       height={48}
@@ -96,12 +98,13 @@ export default function MobileNav({ navigation }) {
                   id="first_nav"
                 >
                   {!showNav ? (
-                    Object.keys(navigation).map((nav) => {
+                    Object.keys(navigation).map((nav, navIndex) => {
                       var nav_object = navigation[nav];
                       return (
                         <>
                           {nav_object.end ? (
                             <Link
+                              key={navIndex}
                               href={nav_object.href}
                               className="w-full block"
                             >
@@ -122,6 +125,7 @@ export default function MobileNav({ navigation }) {
                           ) : (
                             <NavigationItem
                               title={nav_object.text}
+                              key={navIndex}
                               slug={nav}
                               setNav={(slug) => {
                                 setHistory({ ...history, firstNav: { slug: slug, data: nav_object } });
@@ -154,12 +158,13 @@ export default function MobileNav({ navigation }) {
                         </button>
                       </div>
                       <div className="py-4 flex flex-col gap-1">
-                        {history.firstNav.data.child.map((secondNav) => {
+                        {history.firstNav.data.child.map((secondNav, second_index) => {
                           return (
                             <>
                               {secondNav.end ? (
                                 <Link
                                   href={secondNav.href}
+                                  key={second_index}
                                   className="w-full"
                                 >
                                   <DrawerClose
@@ -173,13 +178,17 @@ export default function MobileNav({ navigation }) {
                                   </DrawerClose>
                                 </Link>
                               ) : (
-                                <div className="pb-4 mb-4 border-b border-stone-50/20 last:border-0 last:pb-0 last:mb-0">
+                                <div
+                                  key={second_index}
+                                  className="pb-4 mb-4 border-b border-stone-50/20 last:border-0 last:pb-0 last:mb-0"
+                                >
                                   <p className="font-semibold mb-2">{secondNav.text}</p>
                                   <div className="flex flex-col gap-1">
-                                    {secondNav.child.map((thirdNav) => {
+                                    {secondNav.child.map((thirdNav, index) => {
                                       // console.log(thirdNav.text, thirdNav.end);
                                       return (
                                         <NavigationItem
+                                          key={index}
                                           title={thirdNav.text}
                                           end={thirdNav.end}
                                           setNav={(slug) => {
@@ -227,8 +236,11 @@ export default function MobileNav({ navigation }) {
                         </button>
                       </div>
                       <div className="py-4 flex flex-col gap-1">
-                        {history.secondNav.data.child.map((thirdNav) => (
-                          <Link href={thirdNav.href}>
+                        {history.secondNav.data.child.map((thirdNav, third_index) => (
+                          <Link
+                            href={thirdNav.href}
+                            key={third_index}
+                          >
                             <DrawerClose
                               className="text-left  w-full"
                               onClick={resetNav}

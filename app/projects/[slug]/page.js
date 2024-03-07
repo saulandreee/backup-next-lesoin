@@ -19,6 +19,7 @@ export async function generateStaticParams() {
 export default async function page({ params }) {
   const { slug } = params;
   const project = await getSingleProject(slug);
+  // console.log(project);
   // console.log(params);
 
   // var slugNotMatch = {
@@ -41,7 +42,7 @@ export default async function page({ params }) {
 
   return (
     <>
-      <div className="py-20">
+      <div className="py-12 lg:py-20">
         {/* <div className="">{project.title}</div> */}
         <div>
           <Image
@@ -51,9 +52,11 @@ export default async function page({ params }) {
             quality={100}
             alt={`${slug}-img`}
             loading="eager"
+            sizes="(min-width: 640px) 80%, "
             priority
           />
-          <div className="w-full bg-white px-14 pt-16 pb-20 mb-16">
+
+          <div className="w-full bg-white px-4 lg:px-14 pt-12 lg:pt-16 pb-12 lg:pb-20 mb-8 lg:mb-16">
             <h1 className="text-3xl font-marcellus text-center text-base-brown mb-8">{project.title}</h1>
             <div className="flex flex-col gap-6 lg:flex-row lg:gap-16">
               <div className="flex-1 prose max-w-full font-roboto font-light text-base-brown">{HTMLReactParser(project.content)}</div>
@@ -77,45 +80,58 @@ export default async function page({ params }) {
               </div>
             </div>
           </div>
-          <div className="flex justify-between">
-            <Link
-              href="/"
-              className="flex gap-4 group"
-            >
-              <Button
-                size="icon"
-                variant="secondary"
-                className="w-8 h-full bg-white"
+          <div className="grid grid-cols-2 gap-4">
+            {project.prev.slug ? (
+              <Link
+                href={`/projects/${project.prev.slug}`}
+                className="flex gap-4 group"
               >
-                <ChevronLeft
-                  size={20}
-                  className=""
-                />
-              </Button>
-              <div>
-                <p className="uppercase text-xs text-base-brown font-karla tracking-[2px] mb-0.5">Previous Project</p>
-                <p className="capitalize font-marcellus">{project.title}</p>
-              </div>
-            </Link>
-            <Link
-              href="/"
-              className="flex gap-4 text-right group"
-            >
-              <div>
-                <p className="uppercase text-xs text-base-brown font-karla tracking-[2px] mb-0.5">Next Project</p>
-                <p className="capitalize font-marcellus">{project.title}</p>
-              </div>
-              <Button
-                size="icon"
-                variant="secondary"
-                className="w-8 h-full bg-white"
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  className="w-8 h-full bg-white shrink-0"
+                >
+                  <ChevronLeft
+                    size={20}
+                    className=""
+                  />
+                </Button>
+                <div>
+                  <p className="uppercase text-xs text-base-brown font-karla tracking-[2px] mb-0.5">
+                    Previous <br className="md:hidden" /> Project
+                  </p>
+                  <p className="capitalize font-marcellus">{project.prev.title}</p>
+                </div>
+              </Link>
+            ) : (
+              <span></span>
+            )}
+            {project.next.slug ? (
+              <Link
+                href={`/projects/${project.next.slug}`}
+                className="flex gap-4 text-right group justify-self-end"
               >
-                <ChevronRight
-                  size={20}
-                  className="text-base-brown"
-                />
-              </Button>
-            </Link>
+                <div>
+                  <p className="uppercase text-xs text-base-brown font-karla tracking-[2px] mb-0.5">
+                    Next
+                    <br className="md:hidden" /> Project
+                  </p>
+                  <p className="capitalize font-marcellus">{project.next.title}</p>
+                </div>
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  className="w-8 h-full bg-white shrink-0"
+                >
+                  <ChevronRight
+                    size={20}
+                    className="text-base-brown"
+                  />
+                </Button>
+              </Link>
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
       </div>
