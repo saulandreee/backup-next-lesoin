@@ -25,7 +25,7 @@ import { List, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "./ui/menubar";
-import { useMediaQuery } from "@/hooks/use-media-query";
+
 import MobileNav from "./MobileNav";
 
 export default function Navbar() {
@@ -472,8 +472,6 @@ export default function Navbar() {
     },
   });
 
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
-
   const productsRef = useRef();
 
   // generating projects.json data
@@ -528,9 +526,10 @@ export default function Navbar() {
 
   //   console.log(temp);
   // }, []);
-  if (isDesktop) {
-    return (
-      <div className="bg-base-darker py-4">
+
+  return (
+    <>
+      <div className="bg-base-darker py-4 hidden lg:block">
         <div className="max-w-[1200px] px-5 mx-auto flex items-center">
           <Link href={"/"}>
             <Image
@@ -683,21 +682,23 @@ export default function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className=""
+                <NavigationMenuLink
+                  href={navigation["about-us"].href}
+                  className={cn(navigationMenuTriggerStyle())}
                   withChild={false}
                 >
-                  <Link href={navigation["about-us"].href}>{navigation["about-us"].text}</Link>
-                </NavigationMenuTrigger>
+                  {navigation["about-us"].text}
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className=""
+                <NavigationMenuLink
+                  href={navigation["online-booking"].href}
+                  className={cn(navigationMenuTriggerStyle())}
                   withChild={false}
                 >
-                  <Link href={navigation["online-booking"].href}>{navigation["online-booking"].text}</Link>
-                </NavigationMenuTrigger>
+                  {navigation["online-booking"].text}
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -711,27 +712,24 @@ export default function Navbar() {
           </Button>
         </div>
       </div>
-    );
-  }
-
-  return <MobileNav navigation={navigation} />;
+      <MobileNav navigation={navigation} />
+    </>
+  );
 }
 
 const ListItem = React.forwardRef(({ className, title, children, ...props }, ref) => {
   const [dataState, setDataState] = useState("open");
   return (
     <li className="font-roboto">
-      <NavigationMenuLink>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-2.5 leading-none no-underline outline-none transition-colors hover:bg-base-cream/50",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-        </a>
+      <NavigationMenuLink
+        id="lalalili"
+        className={cn(
+          "block select-none space-y-1 rounded-md p-2.5 leading-none no-underline outline-none transition-colors hover:bg-base-cream/50 text-sm font-medium leading-none",
+          className
+        )}
+        {...props}
+      >
+        {title}
       </NavigationMenuLink>
     </li>
   );
