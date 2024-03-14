@@ -1,0 +1,44 @@
+{
+  "body": {
+    "id": 46,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "body",
+    "name": "Body"
+  },
+  "dna": {
+    "id": 50,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "dna",
+    "name": "DNA"
+  },
+  "face": {
+    "id": 45,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "face",
+    "name": "Face"
+  },
+  "hair": {
+    "id": 47,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "hair",
+    "name": "Hair"
+  },
+  "popular": {
+    "id": 49,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "popular",
+    "name": "Popular"
+  },
+  "signature": {
+    "id": 48,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "signature",
+    "name": "Signature"
+  },
+  "skin-case": {
+    "id": 51,
+    "image": "/images/desktop/treatment/_THUMBNAIL/1-facial.jpg",
+    "slug": "skin-case",
+    "name": "Skin Case"
+  }
+}

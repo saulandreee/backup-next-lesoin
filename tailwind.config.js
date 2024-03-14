@@ -18,6 +18,7 @@ module.exports = {
       colors: {
         base: {
           "light-cream": "#F7F4F0",
+          creamer: "#e8d2b8",
           cream: "#C0B7AF",
           "darker-cream": "#A28869",
           gray: "#8F8F8F",

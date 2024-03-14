@@ -1,12 +1,18 @@
+import NewsCard from "@/components/NewsCard";
+import NewsletterSubs from "@/components/NewsletterSubs";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { fetchBlogsData, getAllBlogsData } from "@/lib/blogs";
+import { fetchCategoriesData, getAllCategoriesData } from "@/lib/categories";
 import { fetchProjectCategories, readProjectCategories } from "@/lib/projectCategories";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
   var projectCategories = await readProjectCategories();
-  console.log(projectCategories);
+  // await fetchBlogsData();
+  var blogs = await getAllBlogsData();
+
   return (
     <main className="min-h-screen w-full bg-base-50">
       <section className="relative h-fit">
@@ -68,7 +74,7 @@ export default async function Home() {
                 </picture>
                 <div className="absolute top-1/4 left-[40%] xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
                   <h2 className=" text-base-cream uppercase tracking-[4px] text-sm lg:text-lg mb-2 lg:mb-6 max-w-[650px]">
-                    Beauty's
+                    Beauty&apos;s
                     <br className="lg:hidden" /> New Standard
                   </h2>
                   <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 w-full md:max-w-48 lg:max-w-[450px] xl:max-w-[650px] leading-8 lg:leading-[50px]">
@@ -111,18 +117,15 @@ export default async function Home() {
           </Button>
         </div>
         <Carousel
-          opts={{
-            loop: true,
-          }}
           autoplay={false}
           className="!w-full"
         >
-          <CarouselContent className="gap-8">
+          <CarouselContent className="-ml-6">
             {Object.keys(projectCategories).map((category_slug, index) => {
               var category = projectCategories[category_slug];
               return (
                 <CarouselItem
-                  className="relative max-w-full basis-full md:basis-1/2 lg:basis-1/3"
+                  className="relative max-w-full basis-full md:basis-1/2 lg:basis-1/3 pl-6"
                   key={index}
                 >
                   <Link href={`/projects-categories/${category.slug}`}>
@@ -142,7 +145,119 @@ export default async function Home() {
               );
             })}
           </CarouselContent>
+          <CarouselPrevious className="bg-base-cream text-base-dark-brown -left-10" />
+          <CarouselNext className="bg-base-cream text-base-dark-brown -right-10" />
         </Carousel>
+      </section>
+      <section className="md:aspect-[1024/470] 2xl:aspect-[256/100] w-full bg-base-dark-brown grid md:grid-cols-2">
+        <div className="px-10 pr-0 md:px-6 lg:pl-10 lg:pr-4 py-10 lg:max-w-[500px] mx-auto place-self-center">
+          <h1 className="font-marcellus text-[32px] text-stone-50 mb-4">Luxury, quality & comfort</h1>
+          <h2 className="font-karla uppercase tracking-[2px] mb-10 text-white/40">Aesthetic clinic premium service</h2>
+          <p className="text-base-brown font-light antialiased mb-8">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle.
+          </p>
+          <Button
+            variant="outline"
+            className="bg-transparent text-base-creamer border-base-creamer hover:text-base-darkest hover:bg-base-creamer"
+          >
+            View Amenities
+          </Button>
+        </div>
+        <div className="w-full h-full overflow-hidden">
+          <picture>
+            <source
+              srcset={"/images/desktop/landing/treatment-room.webp"}
+              media="(min-width: 768px)"
+            />
+            <Image
+              width={600}
+              height={750}
+              quality={100}
+              src={"/images/mobile/treatment-room.webp"}
+              className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto"
+              sizes="(min-width: 768px) 600px, (min-width: 1024px) 750px"
+            />
+          </picture>
+        </div>
+      </section>
+      <section className="relative overflow-hidden md:h-[450px] lg:h-[500px] xl:h-[700px]">
+        <Image
+          src={"/images/mobile/voucher.webp"}
+          fill
+          quality={100}
+          alt="voucher-bg"
+          className="object-cover w-full absolute md:hidden"
+        />
+        <Image
+          src={"/images/desktop/landing/voucher-md.webp"}
+          fill
+          quality={100}
+          alt="voucher-bg"
+          className="object-cover w-full absolute hidden md:block lg:hidden"
+        />
+        <Image
+          src={"/images/desktop/landing/voucher.webp"}
+          fill
+          quality={100}
+          alt="voucher-bg"
+          className="object-cover w-full absolute hidden lg:block"
+        />
+        <div className="max-w-[1200px] h-full mx-auto relative z-[1]">
+          <div className="pt-16 pb-16 max-w-[320px] lg:p-0 grid gap-10 text-center place-items-center relative left-1/2 -translate-x-1/2 md:left-1/2 md:-translate-x-1/2 lg:left-auto  lg:translate-x-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 right-32">
+            <h2 className="text-base-brown font-marcellus text-[18px]">Beauty Treatment Gift Vouchers</h2>
+            <h1 className="font-karla text-[32px] text-base-dark-brown uppercase max-w-[270px] mx-auto leading-[150%]">
+              A perfect gift to someone special
+            </h1>
+            <Button className="w-fit">Explore Vouchers</Button>
+          </div>
+        </div>
+      </section>
+      <section className="bg-base-light-cream">
+        <div className="max-w-[1200px] px-6 mx-auto py-16 lg:py-32">
+          <h2 className="text-4xl font-marcellus text-base-dark-brown text-center mb-8 lg:mb-16">Latest news & offers</h2>
+          <Carousel
+            autoplay={true}
+            autoplayDelay={5000}
+            className="!w-full"
+          >
+            <CarouselContent className="-ml-6">
+              {Object.keys(blogs).map((blog_slug, index) => {
+                var blog = blogs[blog_slug];
+                return (
+                  <CarouselItem
+                    className="pl-6 md:basis-1/2 lg:basis-1/3"
+                    key={index}
+                  >
+                    <Link href={blog.slug}>
+                      <NewsCard news={blog} />
+                    </Link>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      </section>
+      <section className="relative w-full h-fit min-h-[500px]">
+        <Image
+          src={"/images/mobile/subscribe.webp"}
+          fill
+          className="absolute object-cover w-full md:hidden"
+          quality={100}
+        />
+        <Image
+          src={"/images/desktop/landing/subscribe.webp"}
+          fill
+          className="absolute w-full object-cover"
+          quality={100}
+        />
+        <div className="max-w-[600px] mx-auto px-8 relative z-[1] text-center py-16 lg:py-32">
+          <h3 className="uppercase text-[18px] text-white/40 tracking-[2px] font-karla mb-8">Stay In touch</h3>
+          <h2 className="text-[32px] font-marcellus text-stone-50 leading-[150%] mb-12">
+            Join our email list and be the first to know about specials, events and more!
+          </h2>
+          <NewsletterSubs />
+        </div>
       </section>
     </main>
   );
