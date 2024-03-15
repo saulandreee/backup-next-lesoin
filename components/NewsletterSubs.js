@@ -42,15 +42,14 @@ export default function NewsletterSubs() {
       >
         <FormField
           control={form.control}
-          className="flex-1"
           name="username"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex-1">
               {/* <FormLabel>Username</FormLabel> */}
               <FormControl>
                 <Input
                   placeholder="Email Address"
-                  className="py-2.5 h-auto w-full"
+                  className="h-12 w-full"
                   {...field}
                 />
               </FormControl>
@@ -62,6 +61,7 @@ export default function NewsletterSubs() {
         <Button
           variant="secondary"
           type="outline"
+          className="h-12"
         >
           Subscribe
         </Button>

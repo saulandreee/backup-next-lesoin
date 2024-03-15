@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { fetchBlogsData, getAllBlogsData } from "@/lib/blogs";
 import { fetchCategoriesData, getAllCategoriesData } from "@/lib/categories";
+import { fetchProducts } from "@/lib/products";
 import { fetchProjectCategories, readProjectCategories } from "@/lib/projectCategories";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,9 @@ export default async function Home() {
   var projectCategories = await readProjectCategories();
   // await fetchBlogsData();
   var blogs = await getAllBlogsData();
+
+  await fetchProducts();
+  // console.log(products);
 
   return (
     <main className="min-h-screen w-full bg-base-50">
