@@ -1,0 +1,131 @@
+[
+  {
+    "id": 1,
+    "name": "dr. Ade",
+    "title": "Medical Doctor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/dr-ade.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "dr. Indah",
+    "title": "Pathologist",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/dr-indah.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "name": "dr. Lidya",
+    "title": "Medical Doctor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/dr-lidya.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "name": "dr. Ruth",
+    "title": "Surgeon",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/dr-ruth.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  },
+
+  {
+    "id": 5,
+    "name": "dr. Sammy",
+    "title": "Dermatologist",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/dr-sammy.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  }
+]

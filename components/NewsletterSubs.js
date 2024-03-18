@@ -12,7 +12,7 @@ const formSchema = z.object({
   email: z
     .string()
     .min(2, {
-      message: "Username must be at least 2 characters.",
+      message: "Email must be at least 2 characters.",
     })
     .email({ message: "Invalid email address!" }),
 });
@@ -49,7 +49,7 @@ export default function NewsletterSubs() {
               <FormControl>
                 <Input
                   placeholder="Email Address"
-                  className="h-12 w-full"
+                  className="h-12 border border-base-dark-brown bg-base-dark-brown text-base-light-cream ring-offset-base-dark-brown placeholder:text-base-light-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-base-brown focus-visible:ring-offset-2"
                   {...field}
                 />
               </FormControl>
