@@ -529,7 +529,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="bg-base-darker py-4 hidden lg:block">
+      <div className="bg-base-darker py-4 hidden lg:block lg:sticky lg:top-0 z-[10]">
         <div className="max-w-[1200px] px-5 mx-auto flex items-center">
           <Link href={"/"}>
             <Image
@@ -557,7 +557,7 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger
                   className=""
-                  withChild={true}
+                  haveChild={true}
                 >
                   {navigation.treatment.text}
                 </NavigationMenuTrigger>
@@ -586,7 +586,7 @@ export default function Navbar() {
                                           <NavigationSubMenuItem className="w-full">
                                             <NavigationSubMenuTrigger
                                               className="w-full"
-                                              withChild={true}
+                                              haveChild={true}
                                             >
                                               {treatment_second_child.text}
                                             </NavigationSubMenuTrigger>
@@ -635,7 +635,7 @@ export default function Navbar() {
               <NavigationMenuItem ref={productsRef}>
                 <NavigationMenuTrigger
                   className=""
-                  withChild={true}
+                  haveChild={true}
                 >
                   {navigation.products.text}
                 </NavigationMenuTrigger>
@@ -660,7 +660,7 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger
                   className=""
-                  withChild={true}
+                  haveChild={true}
                 >
                   {navigation.solutions.text}
                 </NavigationMenuTrigger>
@@ -685,7 +685,7 @@ export default function Navbar() {
                 <NavigationMenuLink
                   href={navigation["about-us"].href}
                   className={cn(navigationMenuTriggerStyle())}
-                  withChild={false}
+                  haveChild={false}
                 >
                   {navigation["about-us"].text}
                 </NavigationMenuLink>
@@ -695,7 +695,7 @@ export default function Navbar() {
                 <NavigationMenuLink
                   href={navigation["online-booking"].href}
                   className={cn(navigationMenuTriggerStyle())}
-                  withChild={false}
+                  haveChild={false}
                 >
                   {navigation["online-booking"].text}
                 </NavigationMenuLink>

@@ -4,13 +4,12 @@ import { revalidatePath } from "next/cache";
 const onSubmitForm = async (values) => {
   "use server";
   try {
+    // throw { error: true };
     await new Promise((resolve) => setTimeout(resolve, 5000));
-    console.log(values);
     return { success: true };
-    // revalidatePath("/online-booking");
   } catch (error) {
     console.log(error);
-    return { error: error };
+    return { error: error, message: "Failed to save booking!", success: false };
   }
 };
 

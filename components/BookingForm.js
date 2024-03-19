@@ -1,38 +1,42 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
+import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Loader2Icon } from "lucide-react";
-import { useFormStatus } from "react-dom";
+import { toast } from "./ui/use-toast";
 
-const SubmitButton = ({ children, ...props }) => {
-  const { pending } = useFormStatus();
-  return (
-    <Button {...props}>
-      {pending ? (
-        <Loader2Icon
-          size={20}
-          className="animate-spin"
-        />
-      ) : (
-        children
-      )}
-    </Button>
-  );
-};
+// const SubmitButton = ({ children, ...props }) => {
+//   const { pending } = useFormStatus();
+//   return (
+//     <Button
+//       {...props}
+//       disabled={pending}
+//     >
+//       {pending ? (
+//         <Loader2Icon
+//           size={20}
+//           className="animate-spin"
+//         />
+//       ) : (
+//         children
+//       )}
+//     </Button>
+//   );
+// };
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }).max(30, { message: "Name must be 30 or fewer characters long" }),
   email: z
     .string()
     .min(2, {
-      message: "Username must be at least 2 characters.",
+      message: "Email must be at least 2 characters.",
     })
     .email({ message: "Invalid email address!" }),
   phone: z.string().min(7),
@@ -49,28 +53,49 @@ export default function BookingForm({ onSubmit }) {
       phone: "",
       message: "",
     },
+    reValidateMode: "onChange",
   });
-  const { pending } = useFormStatus();
 
   const handleSubmit = (data) => {
     setLoading(true);
     onSubmit(data)
       .then((res) => {
         console.log(res);
-        if (res.success) {
+        if (res?.success) {
           setLoading(false);
-          console.log("here");
+          form.reset();
+          toast({
+            variant: "success",
+            title: "Booking success!",
+            description: "We'll be in touch with you by phone or email shortly.",
+          });
+        } else {
+          toast({
+            title: "Something went wrong",
+            description: res.message,
+            variant: "destructive",
+          });
+          setLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
+        if (err.message) {
+          toast({
+            title: "Something went wrong",
+            description: err.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Something went wrong",
+            description: "Please try again in a few moment.",
+            variant: "destructive",
+          });
+        }
+        setLoading(false);
       });
-    form.reset();
   };
-
-  useEffect(() => {
-    console.log(pending, isLoading);
-  }, [pending, isLoading]);
 
   return (
     <Form
@@ -78,8 +103,8 @@ export default function BookingForm({ onSubmit }) {
       className="flex gap-4 flex-col md:flex-row"
     >
       <form
-        // onSubmit={form.handleSubmit(onSubmit)}
-        action={handleSubmit}
+        onSubmit={form.handleSubmit(handleSubmit)}
+        // action={handleSubmit}
         className="grid gap-4"
       >
         <FormField
@@ -157,12 +182,24 @@ export default function BookingForm({ onSubmit }) {
         />
 
         <div className="flex gap-2 items-center">
-          <SubmitButton
+          <Button
+            type="submit"
+            className="w-fit h-12"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <Loader2Icon
+                size={20}
+                className="animate-spin"
+              />
+            ) : (
+              "Submit"
+            )}
+          </Button>
+          {/* <SubmitButton
             className="w-fit h-12"
             type="submit"
-          >
-            Submit
-          </SubmitButton>
+          ></SubmitButton> */}
         </div>
       </form>
     </Form>

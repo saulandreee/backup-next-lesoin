@@ -38,13 +38,13 @@ const navigationMenuTriggerStyle = cva(
   "group inline-flex h-10 items-center justify-center rounded-md px-2 py-2 text-sm font-medium transition-colors bg-base-darker text-stone-50 uppercase text-xs tracking-[2px] rounded hover:bg-base-dark-brown/50 data-[state=open]:bg-base-dark-brown/50"
 );
 
-const NavigationMenuTrigger = React.forwardRef(({ className, withChild, children, ...props }, ref) => (
+const NavigationMenuTrigger = React.forwardRef(({ className, haveChild, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
     className={cn(navigationMenuTriggerStyle(), "group", className)}
     {...props}
   >
-    {withChild ? (
+    {haveChild ? (
       <>
         {children}
         {""}
@@ -140,13 +140,13 @@ const navigationSubMenuTriggerStyle = cva(
   "group inline-flex w-full items-center text-left rounded-md px-2 py-2 text-sm font-medium transition-colors bg-base-brown hover:bg-base-cream/50 rounded data-[state=open]:bg-base-cream/50"
 );
 
-const NavigationSubMenuTrigger = React.forwardRef(({ className, withChild, children, ...props }, ref) => (
+const NavigationSubMenuTrigger = React.forwardRef(({ className, haveChild, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
     className={cn(navigationSubMenuTriggerStyle(), "group", className)}
     {...props}
   >
-    {withChild ? (
+    {haveChild ? (
       <>
         {children}
         {""}

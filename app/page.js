@@ -1,9 +1,11 @@
+import BookingForm from "@/components/BookingForm";
 import NewsCard from "@/components/NewsCard";
 import NewsletterSubs from "@/components/NewsletterSubs";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { fetchBlogsData, getAllBlogsData } from "@/lib/blogs";
 import { fetchCategoriesData, getAllCategoriesData } from "@/lib/categories";
+import { addEmailToList } from "@/lib/mailinglist";
 import { fetchProducts } from "@/lib/products";
 import { fetchProjectCategories, readProjectCategories } from "@/lib/projectCategories";
 import Image from "next/image";
@@ -14,8 +16,18 @@ export default async function Home() {
   // await fetchBlogsData();
   var blogs = await getAllBlogsData();
 
-  await fetchProducts();
-  // console.log(products);
+  const handleSubscribe = async (data) => {
+    "use server";
+    try {
+      // throw { error: true };
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await addEmailToList(data.email);
+
+      return { success: true };
+    } catch (error) {
+      return { error: error, message: "We found an error while trying save your email to our list. Please try again later." };
+    }
+  };
 
   return (
     <main className="min-h-screen w-full bg-base-50">
@@ -52,12 +64,14 @@ export default async function Home() {
                   <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 max-w-56 lg:max-w-[650px] leading-8 lg:leading-[50px]">
                     The first genetic-based cellular activation clinic
                   </h1>
-                  <Button
-                    variant=""
-                    className="tracking-[3px]"
-                  >
-                    Reserve Now
-                  </Button>
+                  <Link href={"/online-booking"}>
+                    <Button
+                      variant=""
+                      className="tracking-[3px]"
+                    >
+                      Reserve Now
+                    </Button>
+                  </Link>
                 </div>
               </CarouselItem>
 
@@ -84,12 +98,15 @@ export default async function Home() {
                   <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 w-full md:max-w-48 lg:max-w-[450px] xl:max-w-[650px] leading-8 lg:leading-[50px]">
                     Beyond aesthetic clinic but advanced beauty technology enterprise
                   </h1>
-                  <Button
-                    variant=""
-                    className="tracking-[3px]"
-                  >
-                    Reserve Now
-                  </Button>
+
+                  <Link href={"/online-booking"}>
+                    <Button
+                      variant=""
+                      className="tracking-[3px]"
+                    >
+                      Reserve Now
+                    </Button>
+                  </Link>
                 </div>
               </CarouselItem>
             </CarouselContent>
@@ -107,7 +124,9 @@ export default async function Home() {
             injectables, liquid facelifts, and a vast selection of highly sought-after cosmetic laser treatments to more targeted solutions that
             address your skin concerns, optimize your skincare routine and achieve long-lasting results
           </p>
-          <Button>More About Us</Button>
+          <Link href={"/about-us"}>
+            <Button>More About Us</Button>
+          </Link>
         </div>
       </section>
       <section className="py-12 px-6 md:py-20 max-w-[1200px] mx-auto">
@@ -149,8 +168,8 @@ export default async function Home() {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious className="bg-base-cream text-base-dark-brown -left-10" />
-          <CarouselNext className="bg-base-cream text-base-dark-brown -right-10" />
+          <CarouselPrevious className="bg-base-cream text-base-dark-brown lg:left-4 xl:-left-10" />
+          <CarouselNext className="bg-base-cream text-base-dark-brown  lg:right-4 xl:-right-10" />
         </Carousel>
       </section>
       <section className="md:aspect-[1024/470] 2xl:aspect-[256/100] w-full bg-base-dark-brown grid md:grid-cols-2">
@@ -160,12 +179,14 @@ export default async function Home() {
           <p className="text-base-brown font-light antialiased mb-8">
             Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle.
           </p>
-          <Button
-            variant="outline"
-            className="bg-transparent text-base-creamer border-base-creamer hover:text-base-darkest hover:bg-base-creamer"
-          >
-            View Amenities
-          </Button>
+          <Link href={"/about-us"}>
+            <Button
+              variant="outline"
+              className="bg-transparent text-base-creamer border-base-creamer hover:text-base-darkest hover:bg-base-creamer"
+            >
+              View Amenities
+            </Button>
+          </Link>
         </div>
         <div className="w-full h-full overflow-hidden">
           <picture>
@@ -180,6 +201,7 @@ export default async function Home() {
               src={"/images/mobile/treatment-room.webp"}
               className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto"
               sizes="(min-width: 768px) 600px, (min-width: 1024px) 750px"
+              alt="treatment-room"
             />
           </picture>
         </div>
@@ -248,19 +270,21 @@ export default async function Home() {
           fill
           className="absolute object-cover w-full md:hidden"
           quality={100}
+          alt="bg-banner"
         />
         <Image
           src={"/images/desktop/landing/subscribe.webp"}
           fill
           className="absolute w-full object-cover"
           quality={100}
+          alt="bg-banner"
         />
-        <div className="max-w-[600px] mx-auto px-8 relative z-[1] text-center py-16 lg:py-32">
+        <div className="max-w-[600px]  mx-auto px-8 relative z-[1] text-center py-16 lg:py-32">
           <h3 className="uppercase text-[18px] text-white/40 tracking-[2px] font-karla mb-8">Stay In touch</h3>
           <h2 className="text-[32px] font-marcellus text-stone-50 leading-[150%] mb-12">
             Join our email list and be the first to know about specials, events and more!
           </h2>
-          <NewsletterSubs />
+          <NewsletterSubs onSubmit={handleSubscribe} />
         </div>
       </section>
     </main>

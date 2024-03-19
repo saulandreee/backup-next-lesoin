@@ -94,6 +94,7 @@ export default async function About() {
                     quality={100}
                     className="object-contain w-full"
                     sizes="(min-width: 768px) 600px, (min-width: 1024px) 960px, (min-width: 1280px) 1200px"
+                    alt={`lesoin-clinic-${index + 1}`}
                   />
                 </CarouselItem>
               );
@@ -106,16 +107,20 @@ export default async function About() {
           An inspiring team of Doctors & Aestheticians
         </h1>
         <div className="grid gap-6 gap-y-6 md:grid-cols-2 xl:grid-cols-4 justify-center">
-          {listDocter.map((docter) => {
+          {listDocter.map((docter, index) => {
             console.log(docter.links);
             return (
-              <div className="shadow">
+              <div
+                className="shadow"
+                key={index}
+              >
                 <div className="relative max-w-[400px] mx-auto aspect-[4/2.5] mb-6 ">
                   <Image
                     src={docter.image}
                     fill
                     quality={100}
                     className="object-contain"
+                    alt={`profile-docter-${index}`}
                   />
                 </div>
                 <div className="p-2">
@@ -123,8 +128,9 @@ export default async function About() {
                   <p className="text-xs font-karla uppercase text-center mb-6 tracking-[3px]">{docter.title}</p>
                   <p className="text-center font-roboto text-base-brown mb-6">{docter.description}</p>
                   <div className="flex gap-2.5 justify-center">
-                    {docter.links.map((medsos) => (
+                    {docter.links.map((medsos, medsos_index) => (
                       <MedsosLinkIcon
+                        key={medsos_index}
                         link={medsos.link}
                         type={medsos.type}
                         className="text-base-brown"
@@ -139,7 +145,7 @@ export default async function About() {
         </div>
       </section>
       <section className="bg-base-dark lg:h-[600px] py-20">
-        <div className="mb-8">
+        <div className="mb-8 text-center">
           <Quote
             size={40}
             className="text-base-brown/50 mx-auto lg:hidden"
@@ -164,7 +170,7 @@ export default async function About() {
                   key={index}
                   className="w-full text-center"
                 >
-                  <p className="text-xl lg:text-[40px] font-marcellus text-stone-50 mb-8">{testimony.testimony}</p>
+                  <p className="text-xl lg:text-[40px] leading-[150%] font-marcellus text-stone-50 mb-8">{testimony.testimony}</p>
                   <p className="text-lg lg:text-3xl font-marcellus text-stone-50 mb-4">{testimony.name}</p>
                   <p className="lg:text-lg font-marcellus text-stone-50 mb-4">{testimony.title}</p>
                 </CarouselItem>
@@ -194,7 +200,9 @@ export default async function About() {
               Experience the Future of Beauty
             </h2>
             <h1 className="font-marcellus text-[32px] text-base-dark-brown mb-12 lg:mb-16">Ready for your truly beauty?</h1>
-            <Button className>Reserver Now</Button>
+            <Link href={"/online-booking"}>
+              <Button className>Reserve Now</Button>
+            </Link>
           </div>
         </div>
       </section>

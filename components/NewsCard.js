@@ -14,6 +14,7 @@ export default function NewsCard({ news }) {
           fill
           quality={100}
           className="object-cover w-full"
+          alt="news-image"
         />
         <div className="absolute top-4 left-4 p-2 px-4 bg-base-dark uppercase font-karla tracking-[2px] text-xs text-stone-50">
           {news.categories.map((cat) => cat.name).join()}
