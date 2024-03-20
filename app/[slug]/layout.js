@@ -14,9 +14,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
   // // optionally access and extend (rather than replace) parent metadata
   // const previousImages = (await parent).openGraph?.images || [];
 
-  console.log(blog);
+  // console.log(blog);
   if (!blog) notFound();
 
+  console.log(blog.title);
   return {
     title: `${HTMLReactParser(blog.title)} | Le Soin`,
     description: blog.short_content,

@@ -1,1 +1,10 @@
-{"aromatherapy":{"id":16,"slug":"aromatherapy","name":"Aromatherapy"},"health":{"id":17,"slug":"health","name":"Health"},"massage":{"id":18,"slug":"massage","name":"Massage"},"spa":{"id":19,"slug":"spa","name":"Spa"},"spa-breaks":{"id":20,"slug":"spa-breaks","name":"Spa Breaks"},"treatment":{"id":52,"slug":"treatment","name":"Treatment"},"uncategorized":{"id":1,"slug":"uncategorized","name":"Uncategorized"},"wellness":{"id":21,"slug":"wellness","name":"Wellness"}}
+{
+  "aromatherapy": { "id": 16, "slug": "aromatherapy", "name": "Aromatherapy" },
+  "health": { "id": 17, "slug": "health", "name": "Health" },
+  "massage": { "id": 18, "slug": "massage", "name": "Massage" },
+  "spa": { "id": 19, "slug": "spa", "name": "Spa" },
+  "spa-breaks": { "id": 20, "slug": "spa-breaks", "name": "Spa Breaks" },
+  "treatment": { "id": 52, "slug": "treatment", "name": "Treatment" },
+  "uncategorized": { "id": 1, "slug": "uncategorized", "name": "Uncategorized" },
+  "wellness": { "id": 21, "slug": "wellness", "name": "Wellness" }
+}
