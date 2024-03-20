@@ -41,7 +41,7 @@ export default function BlogSidebar({ initCategories, initProjectCategories }) {
     if (Object.keys(projectCategories).length && !hasCookie("project_categories")) {
       setCookie("project_categories", projectCategories, { maxAge: 60 * 60 * 3 });
     }
-  }, []);
+  }, [categories, projectCategories]);
 
   return (
     <div className="w-full lg:max-w-[280px] xl:max-w-[320px]">
@@ -79,13 +79,14 @@ export default function BlogSidebar({ initCategories, initProjectCategories }) {
       <div className="mb-8">
         <h4 className="uppercase tracking-[3px] text-karla text-sm border-b border-b-base-brown/30 inline-block pb-2.5 mb-4">Categories</h4>
         <div className="grid gap-2.5">
-          {Object.keys(categories).map((category) => {
+          {Object.keys(categories).map((category, category_index) => {
             var categoryObject = categories[category];
-            console.log(categoryObject);
+            // console.log(categoryObject);
             return (
               <Link
                 href={`/categories/${categoryObject.slug}`}
                 className="text-base-dark hover:text-base-darker font-karla text-sm"
+                key={category_index}
               >
                 {categoryObject.name}
               </Link>
@@ -96,11 +97,12 @@ export default function BlogSidebar({ initCategories, initProjectCategories }) {
       <div className="">
         <h4 className="uppercase tracking-[3px] text-karla text-sm border-b border-b-base-brown/30 inline-block pb-2.5 mb-4">Project Categories</h4>
         <div className="grid gap-2.5">
-          {Object.keys(projectCategories).map((category) => {
+          {Object.keys(projectCategories).map((category, category_index) => {
             var categoryObject = projectCategories[category];
             // console.log(categoryObject);
             return (
               <Link
+                key={category_index}
                 href={`/project-categories/${categoryObject.slug}`}
                 className="text-base-dark hover:text-base-darker font-karla text-sm"
               >

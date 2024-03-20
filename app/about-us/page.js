@@ -184,12 +184,14 @@ export default async function About() {
       <section className="py-[100px] lg:py-[150px] relative">
         <Image
           src={"/images/desktop/about/banner.webp"}
+          alt="banner-image"
           fill
           quality={100}
           className="object-cover h-full hidden lg:inline-block absolute"
         />
         <Image
           src={"/images/mobile/banner.webp"}
+          alt="banner-image"
           fill
           quality={100}
           className="object-cover h-full lg:hidden absolute"

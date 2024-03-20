@@ -1,7 +1,7 @@
 import BlogSidebar from "@/components/BlogSidebar";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { getMoreBlogData, getSingleBlogData } from "@/lib/blogs";
+import { getListBlogPaths, getMoreBlogData, getSingleBlogData } from "@/lib/blogs";
 import { getAllCategoriesData } from "@/lib/categories";
 import { getProjectCategories } from "@/lib/projectCategories";
 import HTMLReactParser from "html-react-parser";
@@ -11,6 +11,13 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+export async function generateStaticParams() {
+  const blogs = await getListBlogPaths();
+  console.log("=================");
+  console.log(blogs);
+  return blogs;
+}
 
 export default async function BlogPage({ params }) {
   const slug = params.slug;
@@ -42,12 +49,18 @@ export default async function BlogPage({ params }) {
                 fill
                 quality={100}
                 className="object-cover"
+                alt={"header-blog"}
               />
             </div>
             <div className="w-full bg-white px-4 lg:px-14 pt-12 lg:pt-16 pb-12 lg:pb-20 mb-8 lg:mb-16">
               <div className="mb-6 flex gap-2">
-                {blog.categories?.map((cat) => (
-                  <span className="p-2.5 bg-base-dark text-[10px] text-karla tracking-[2px] uppercase text-stone-50">{cat.name}</span>
+                {blog.categories?.map((cat, cat_index) => (
+                  <span
+                    key={cat_index}
+                    className="p-2.5 bg-base-dark text-[10px] text-karla tracking-[2px] uppercase text-stone-50"
+                  >
+                    {cat.name}
+                  </span>
                 ))}
               </div>
               <div className="header mb-8">
@@ -132,6 +145,7 @@ export default async function BlogPage({ params }) {
                           fill
                           className="object-cover w-full"
                           quality={100}
+                          alt="other-blog-image"
                         />
                       </div>
                       <p className="text-base-dark text-sm font-karla">{HTMLReactParser(otherblog.title)}</p>
