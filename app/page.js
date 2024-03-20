@@ -90,12 +90,12 @@ export default async function Home() {
                     alt="header-image"
                   />
                 </picture>
-                <div className="absolute top-1/4 left-[40%] xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
+                <div className="absolute top-1/4 left-[30%] xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
                   <h2 className=" text-base-cream uppercase tracking-[4px] text-sm lg:text-lg mb-2 lg:mb-6 max-w-[650px]">
                     Beauty&apos;s
                     <br className="lg:hidden" /> New Standard
                   </h2>
-                  <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 w-full md:max-w-48 lg:max-w-[450px] xl:max-w-[650px] leading-8 lg:leading-[50px]">
+                  <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 w-[220px] md:max-w-48 lg:max-w-[450px] xl:max-w-[650px] leading-8 lg:leading-[50px]">
                     Beyond aesthetic clinic but advanced beauty technology enterprise
                   </h1>
 
