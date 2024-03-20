@@ -7,12 +7,12 @@ import { fetchBlogsData, getAllBlogsData } from "@/lib/blogs";
 import { fetchCategoriesData, getAllCategoriesData } from "@/lib/categories";
 import { addEmailToList } from "@/lib/mailinglist";
 import { fetchProducts } from "@/lib/products";
-import { fetchProjectCategories, readProjectCategories } from "@/lib/projectCategories";
+import { fetchProjectCategories, getProjectCategories } from "@/lib/projectCategories";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  var projectCategories = await readProjectCategories();
+  var projectCategories = await getProjectCategories();
   // await fetchBlogsData();
   var blogs = await getAllBlogsData();
 
