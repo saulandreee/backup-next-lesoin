@@ -61,7 +61,7 @@ export default async function Home() {
                     The Art Of <br className="lg:hidden" />
                     Precision Beauty
                   </h2>
-                  <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 max-w-56 lg:max-w-[650px] leading-8 lg:leading-[50px]">
+                  <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 md:max-w-[450px] lg:max-w-[650px] leading-8 lg:leading-[50px]">
                     The first genetic-based cellular activation clinic
                   </h1>
                   <Link href={"/online-booking"}>
@@ -79,7 +79,7 @@ export default async function Home() {
                 <picture>
                   <source
                     srcset="/images/desktop/landing/header-1.webp"
-                    media="(min-width:600px)"
+                    media="(min-width:768px)"
                   ></source>
                   <Image
                     src={"/images/mobile/header-1.webp"}
@@ -90,12 +90,12 @@ export default async function Home() {
                     alt="header-image"
                   />
                 </picture>
-                <div className="absolute top-1/4 left-[30%] xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
+                <div className="absolute top-1/4 left-[30%] md:left-[40%] xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
                   <h2 className=" text-base-cream uppercase tracking-[4px] text-sm lg:text-lg mb-2 lg:mb-6 max-w-[650px]">
                     Beauty&apos;s
                     <br className="lg:hidden" /> New Standard
                   </h2>
-                  <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 w-[220px] md:max-w-48 lg:max-w-[450px] xl:max-w-[650px] leading-8 lg:leading-[50px]">
+                  <h1 className="text-2xl lg:text-4xl text-dark-brown mb-8 max-w-[220px] md:max-w-[500px] lg:max-w-[450px] xl:max-w-[650px] leading-8 lg:leading-[50px]">
                     Beyond aesthetic clinic but advanced beauty technology enterprise
                   </h1>
 
@@ -115,7 +115,7 @@ export default async function Home() {
           </Carousel>
         </div>
       </section>
-      <section className="bg-base-light-cream h-[600px] py-16 px-6 md:px-0 md:py-20">
+      <section className="bg-base-light-cream md:h-[600px] py-16 px-6 md:px-0 md:py-20">
         <div className="max-w-[480px] mx-auto text-center text-dark-brown">
           <h2 className="tracking-[3px] font-karla mb-8 text-base-cream">EXPERIENCE THE FUTURE OF BEAUTY</h2>
           <h1 className="text-3xl font-marcellus mb-8">The first genetic-based cellular activation clinic</h1>

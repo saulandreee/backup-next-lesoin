@@ -95,7 +95,7 @@ export default function NewsletterSubs({ onSubmit }) {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem className="lg:flex-1">
+            <FormItem className="md:flex-1">
               {/* <FormLabel className="text-base-brown">Email</FormLabel> */}
               <FormControl>
                 <Input
@@ -109,23 +109,10 @@ export default function NewsletterSubs({ onSubmit }) {
             </FormItem>
           )}
         />
-        {/* <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem className="flex-1 grid">
-              <FormControl>
-                <Input
-                  placeholder="Email Address"
-                  className="border w-full border-base-dark-brown bg-base-dark-brown text-base-light-cream ring-offset-base-dark-brown placeholder:text-base-light-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-base-brown focus-visible:ring-offset-2"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-        <Button disabled={isLoading}>
+        <Button
+          disabled={isLoading}
+          className="h-12"
+        >
           {isLoading ? (
             <Loader2Icon
               className="animate-spin"

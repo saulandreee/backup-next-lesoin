@@ -19,14 +19,10 @@ import {
 } from "./ui/navigation-menu";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline/MagnifyingGlassIcon";
-import { List, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "./ui/menubar";
-
 import MobileNav from "./MobileNav";
+import GlobalSearch from "./GlobalSearch";
 
 export default function Navbar() {
   const [navigation, setNavigation] = useState({
@@ -703,13 +699,9 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          <Button
-            size="icon"
-            variant="ghost"
-            className="text-stone-50"
-          >
-            <Search size={18} />
-          </Button>
+          <div className="right-actions">
+            <GlobalSearch />
+          </div>
         </div>
       </div>
       <MobileNav navigation={navigation} />
@@ -724,7 +716,7 @@ const ListItem = React.forwardRef(({ className, title, children, ...props }, ref
       <NavigationMenuLink
         id="lalalili"
         className={cn(
-          "block select-none space-y-1 rounded-md p-2.5 leading-none no-underline outline-none transition-colors hover:bg-base-cream/50 text-sm font-medium leading-none",
+          "block select-none space-y-1 rounded-md p-2.5 leading-none no-underline outline-none transition-colors hover:bg-base-cream/50 text-sm font-medium",
           className
         )}
         {...props}

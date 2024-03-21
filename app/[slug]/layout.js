@@ -17,7 +17,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   // console.log(blog);
   if (!blog) notFound();
 
-  console.log(blog.title);
+  // console.log(blog.title);
   return {
     title: `${HTMLReactParser(blog.title)} | Le Soin`,
     description: blog.short_content,
