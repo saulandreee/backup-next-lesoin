@@ -39,7 +39,10 @@ export default function CustomPagination({ count, page }) {
           [...Array(count)].map((_, index) => {
             if (page === index + 1 || index === 0 || index + 1 === count) {
               return (
-                <PaginationItem className="text-base-dark-brown h-8 w-8">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationLink
                     className={"w-8 h-8"}
                     href={pathname + "?" + createQueryString("page", index + 1)}
@@ -51,7 +54,10 @@ export default function CustomPagination({ count, page }) {
               );
             } else if (page === 1 && (index + 1 === 2 || index + 1 === 3)) {
               return (
-                <PaginationItem className="text-base-dark-brown h-8 w-8">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationLink
                     className={"w-8 h-8"}
                     href={pathname + "?" + createQueryString("page", index + 1)}
@@ -63,7 +69,10 @@ export default function CustomPagination({ count, page }) {
               );
             } else if (page === 2 && (index + 1 === 1 || index + 1 === 3)) {
               return (
-                <PaginationItem className="text-base-dark-brown h-8 w-8">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationLink
                     className={"w-8 h-8"}
                     href={pathname + "?" + createQueryString("page", index + 1)}
@@ -75,7 +84,10 @@ export default function CustomPagination({ count, page }) {
               );
             } else if (page === 3 && (index + 1 === 1 || index + 1 === 2)) {
               return (
-                <PaginationItem className="text-base-dark-brown h-8 w-8">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationLink
                     className={"w-8 h-8"}
                     href={pathname + "?" + createQueryString("page", index + 1)}
@@ -87,7 +99,10 @@ export default function CustomPagination({ count, page }) {
               );
             } else if (page === count - 1 && (index + 1 === count - 1 || index + 1 === count - 2)) {
               return (
-                <PaginationItem className="text-base-dark-brown">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationLink
                     className={"w-8 h-8"}
                     href={pathname + "?" + createQueryString("page", index + 1)}
@@ -99,7 +114,10 @@ export default function CustomPagination({ count, page }) {
               );
             } else if ((page === count && index === count - 2) || (page === count && index === count - 3)) {
               return (
-                <PaginationItem className="text-base-dark-brown">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationLink
                     className={"w-8 h-8"}
                     href={pathname + "?" + createQueryString("page", index + 1)}
@@ -118,7 +136,10 @@ export default function CustomPagination({ count, page }) {
               (page === count && index + 1 === count - 3)
             ) {
               return (
-                <PaginationItem className="text-base-dark-brown h-8 w-8">
+                <PaginationItem
+                  className="text-base-dark-brown h-8 w-8"
+                  key={index}
+                >
                   <PaginationEllipsis />
                 </PaginationItem>
               );
