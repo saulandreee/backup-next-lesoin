@@ -33,14 +33,14 @@ export default async function Search({ params, searchParams }) {
       <div className="py-20 flex flex-col lg:flex-row gap-16 mx-auto max-w-[1200px] px-5">
         <div className="flex-1">
           {data.pagination.total_items > 0 ? (
-            <div className="grid gap-6">
+            <div className="grid gap-8 mb-8">
               {data.data.map((item, index) => {
                 return (
-                  <Link href={item.path}>
-                    <SearchDataCard
-                      data={item}
-                      key={index}
-                    />
+                  <Link
+                    href={item.path}
+                    key={index}
+                  >
+                    <SearchDataCard data={item} />
                   </Link>
                 );
               })}

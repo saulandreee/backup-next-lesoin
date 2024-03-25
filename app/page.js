@@ -154,7 +154,7 @@ export default async function Home() {
                   className="relative max-w-full basis-full md:basis-1/2 lg:basis-1/3 pl-6"
                   key={index}
                 >
-                  <Link href={`/projects-categories/${category.slug}`}>
+                  <Link href={`/project-categories/${category.slug}`}>
                     <div className="aspect-[350/200] max-w-full overflow-hidden flex items-center justify-center relative group">
                       <Image
                         src={category.image}
