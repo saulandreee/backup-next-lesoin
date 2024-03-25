@@ -15,7 +15,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   // const previousImages = (await parent).openGraph?.images || [];
 
   // console.log(blog);
-  if (!blog) notFound();
+  if (!blog.slug) notFound();
 
   // console.log(blog.title);
   return {

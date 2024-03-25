@@ -19,8 +19,8 @@ export async function generateStaticParams() {
 export default async function page({ params }) {
   const { slug } = params;
   const project = await getSingleProject(slug);
-  // console.log(project);
-  // console.log(params);
+  // // console.log(project);
+  // // console.log(params);
 
   // var slugNotMatch = {
   //   "vita-eye": "vitaeye",

@@ -589,7 +589,7 @@ export default function Navbar() {
 
                                             <NavigationSubMenuContent className="">
                                               <ul
-                                                className="py-1.5 px-2 w-[250px] relative max-h-96 overflow-y-scroll"
+                                                className="py-1.5 px-2 w-[250px] relative max-h-96 overflow-y-auto"
                                                 style={{ zIndex: 40 }}
                                               >
                                                 {treatment_second_child.child.map((treatment_third_child, third_index) => {
@@ -662,7 +662,7 @@ export default function Navbar() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <NavigationMenuLink>
-                    <ul className="rounded bg-base-brown w-[250px] max-h-[400px] overflow-y-scroll">
+                    <ul className="rounded bg-base-brown w-[250px] max-h-[400px] overflow-y-auto">
                       {navigation.solutions.child.map((solutions_child, solution_index) => {
                         return (
                           <ListItem

@@ -31,7 +31,7 @@ export default function BlogSidebar({ initCategories, initProjectCategories }) {
   const router = useRouter();
 
   const handleSearch = (values) => {
-    router.push(`/search?q=${encodeURI(values.q)}`);
+    router.push(`/search?q=${encodeURI(values.q)}&page=1`);
   };
 
   useEffect(() => {

@@ -8,6 +8,9 @@ import { fetchCategoriesData, getAllCategoriesData } from "@/lib/categories";
 import { addEmailToList } from "@/lib/mailinglist";
 import { fetchProducts } from "@/lib/products";
 import { fetchProjectCategories, getProjectCategories } from "@/lib/projectCategories";
+import { getAllProjects, updateSingleProject } from "@/lib/projects";
+import axios from "axios";
+import { forEach } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
 

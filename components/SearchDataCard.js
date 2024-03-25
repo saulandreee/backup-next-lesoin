@@ -18,7 +18,7 @@ export default function SearchDataCard({ data }) {
       <div className="flex-1">
         <span className="inline-block p-1.5 px-2.5 font-karla bg-base-dark uppercase text-xs text-stone-50 font-semibold mb-2.5">{data.type}</span>
         <h2 className="text-2xl font-marcellus text-base-darkest-brown mb-4">{HTMLReactParser(data.title)}</h2>
-        <p className="font-roboto text-base-brown">{HTMLReactParser(data.short_description || "")}</p>
+        <article className="font-roboto text-base-brown">{HTMLReactParser(data.short_desc || "")}</article>
       </div>
     </div>
   );

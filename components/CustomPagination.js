@@ -15,6 +15,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 export default function CustomPagination({ count, page }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  console.log(count, page);
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -149,7 +150,7 @@ export default function CustomPagination({ count, page }) {
           <PaginationItem className="text-base-dark-brown h-8 w-8">
             <PaginationLink
               className={"w-8 h-8"}
-              href={pathname + "?" + createQueryString("page", index + 1)}
+              href={pathname + "?" + createQueryString("page", 1)}
               isActive={page === 1}
             >
               {1}

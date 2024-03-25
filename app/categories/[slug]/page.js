@@ -8,9 +8,10 @@ import CustomPagination from "@/components/CustomPagination";
 import SearchDataCard from "@/components/SearchDataCard";
 import Link from "next/link";
 
-export default async function Search({ params, searchParams }) {
+export default async function ProjectByCategories({ params, searchParams }) {
   var data = await searchData(searchParams.q, ["title", "content"], true, searchParams.page || 1, 10);
   console.log(data.pagination);
+
   const cookiesStore = cookies();
   var categories = JSON.parse(cookiesStore.get("categories")?.value || "{}");
   var projectCategories = JSON.parse(cookiesStore.get("project_categories")?.value || "{}");
