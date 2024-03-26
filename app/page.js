@@ -38,27 +38,34 @@ export default async function Home() {
         <div className="absolute w-full h-full bg-base-dark top-0"></div>
         <div className="relative z-[1] max-w-[1400px] mx-auto">
           <Carousel
-            opts={{
-              loop: true,
-            }}
+            opts={
+              {
+                // loop: true,
+              }
+            }
             autoplay={true}
           >
             <CarouselContent className="">
-              <CarouselItem className="relative ">
-                <picture>
-                  <source
-                    srcset="/images/desktop/landing/header-2.webp"
-                    media="(min-width:600px)"
-                  ></source>
+              <CarouselItem className="relative">
+                <div className="relative w-full !aspect-[10/16] md:!aspect-[16/9]">
                   <Image
                     src={"/images/mobile/header-2.webp"}
-                    width={480}
-                    height={810}
+                    fill
                     quality={100}
-                    className="px-2 object-contain w-full"
+                    className="px-2 object-cover w-full md:hidden"
                     alt="header-image"
+                    priority
                   />
-                </picture>
+                  <Image
+                    src={"/images/desktop/landing/header-2.webp"}
+                    fill
+                    quality={100}
+                    className="px-2 object-cover w-full hidden md:inline-block"
+                    alt="header-image"
+                    priority
+                  />
+                </div>
+
                 <div className="absolute top-1/4 xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
                   <h2 className=" text-base-cream uppercase tracking-[4px] text-sm lg:text-lg mb-2 lg:mb-6 max-w-[650px]">
                     The Art Of <br className="lg:hidden" />
@@ -78,21 +85,25 @@ export default async function Home() {
                 </div>
               </CarouselItem>
 
-              <CarouselItem className="relative ">
-                <picture>
-                  <source
-                    srcset="/images/desktop/landing/header-1.webp"
-                    media="(min-width:768px)"
-                  ></source>
+              <CarouselItem className="relative">
+                <div className="relative w-full !aspect-[10/16] md:!aspect-[16/9]">
                   <Image
                     src={"/images/mobile/header-1.webp"}
-                    width={480}
-                    height={810}
+                    fill
                     quality={100}
-                    className="px-2 object-contain w-full"
+                    className="px-2 object-cover w-full md:hidden"
                     alt="header-image"
+                    priority
                   />
-                </picture>
+                  <Image
+                    src={"/images/desktop/landing/header-1.webp"}
+                    fill
+                    quality={100}
+                    className="px-2 object-cover w-full hidden md:inline-block"
+                    alt="header-image"
+                    priority
+                  />
+                </div>
                 <div className="absolute top-1/4 left-[30%] md:left-[40%] xl:top-1/3 p-8 lg:px-40 w-full font-roboto">
                   <h2 className=" text-base-cream uppercase tracking-[4px] text-sm lg:text-lg mb-2 lg:mb-6 max-w-[650px]">
                     Beauty&apos;s
@@ -134,13 +145,13 @@ export default async function Home() {
       </section>
       <section className="py-12 px-6 md:py-20 max-w-[1200px] mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
-          <h3 className="font-marcellus text-2xl max-w-[550px]">Experience an extensive menu of both modern and timeless treatments:</h3>
-          <Button
+          <h2 className="font-marcellus text-2xl max-w-[550px]">Experience an extensive menu of both modern and timeless treatments:</h2>
+          {/* <Button
             variant="outline"
             className="w-fit"
           >
             View Our Treatment
-          </Button>
+          </Button> */}
         </div>
         <Carousel
           autoplay={false}
@@ -191,22 +202,23 @@ export default async function Home() {
             </Button>
           </Link>
         </div>
-        <div className="w-full h-full overflow-hidden">
-          <picture>
-            <source
-              srcset={"/images/desktop/landing/treatment-room.webp"}
-              media="(min-width: 768px)"
-            />
-            <Image
-              width={600}
-              height={750}
-              quality={100}
-              src={"/images/mobile/treatment-room.webp"}
-              className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto"
-              sizes="(min-width: 768px) 600px, (min-width: 1024px) 750px"
-              alt="treatment-room"
-            />
-          </picture>
+        <div className="w-full h-full overflow-hidden relative">
+          <Image
+            quality={100}
+            fill
+            src={"/images/mobile/treatment-room.webp"}
+            className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto md:hidden"
+            sizes="(min-width: 768px) 600px, (min-width: ) 750px"
+            alt="treatment-room"
+          />
+          <Image
+            quality={100}
+            fill
+            src={"/images/desktop/landing/treatment-room.webp"}
+            className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto hidden md:inline-block"
+            sizes="(min-width: 768px) 600px, (min-width: 1024px) 800"
+            alt="treatment-room"
+          />
         </div>
       </section>
       <section className="relative overflow-hidden md:h-[450px] lg:h-[500px] xl:h-[700px]">

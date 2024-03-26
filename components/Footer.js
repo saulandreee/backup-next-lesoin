@@ -47,7 +47,7 @@ export default function Footer() {
         </Link>
       </div>
       <div className="mt-24">
-        <p className="text-sm font-extralight font-roboto text-white/50 uppercase leading-[250%]">Le Soin Clinic© 2023 / All Rights Reserved </p>
+        <p className="text-sm font-extralight font-roboto text-white/50 uppercase leading-[250%]">Le Soin Clinic© 2024 / All Rights Reserved </p>
       </div>
     </div>
   );

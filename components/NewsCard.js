@@ -24,7 +24,7 @@ export default function NewsCard({ news }) {
         <p className="text-lg font-marcellus text-[18] mb-2.5">{HTMLReactParser(news.title)}</p>
         <p className="text-xs font-karla mb-6 uppercase tracking-[2px]">{moment(news.date).format("MMMM DD, YYYY")}</p>
         {news.short_content && <div className="font-roboto text-base-brown mb-6">{HTMLReactParser(news.short_content)}</div>}
-        <p className="text-[11px] font-karla cursor-pointer hover:underline uppercase">Read More</p>
+        <p className="text-[11px] font-karla font-bold cursor-pointer hover:underline uppercase text-base-dark">Read More</p>
         {/* <Link
           href={news.slug}
           className="text-[11px] font-karla"

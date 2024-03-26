@@ -69,7 +69,7 @@ export default async function page({ params }) {
                     <p className="text-base-brown uppercase tracking-[2px]">Date:</p>
                     <p>{moment(project.date).format("MMMM DD, YYYY")}</p>
                   </div>
-                  <div className="flex justify-between text-base-dark-brown">
+                  {/* <div className="flex justify-between text-base-dark-brown">
                     <p className="text-base-brown uppercase tracking-[2px]">Categories:</p>
                     <p>
                       {project.categories
@@ -77,7 +77,7 @@ export default async function page({ params }) {
                         .join()
                         .replace(",", ", ")}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

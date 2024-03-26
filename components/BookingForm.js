@@ -11,6 +11,8 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Loader2Icon } from "lucide-react";
 import { toast } from "./ui/use-toast";
+import Link from "next/link";
+import { contactWhatsapp } from "@/lib/openWhatsapp";
 
 // const SubmitButton = ({ children, ...props }) => {
 //   const { pending } = useFormStatus();
@@ -196,6 +198,17 @@ export default function BookingForm({ onSubmit }) {
               "Submit"
             )}
           </Button>
+          <p className="p-4 font-karla">OR</p>
+
+          <Button
+            className="h-12"
+            variant="outline"
+            type="button"
+            onClick={() => contactWhatsapp(form.getValues("message"))}
+          >
+            Chat with us!
+          </Button>
+
           {/* <SubmitButton
             className="w-fit h-12"
             type="submit"
