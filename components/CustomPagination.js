@@ -159,7 +159,7 @@ export default function CustomPagination({ count, page }) {
         )}
         <PaginationItem className="text-base-dark-brown h-8 w-8">
           <PaginationNext
-            href={page === count ? "#" : pathname + "?" + createQueryString("page", page + 1)}
+            href={page >= count ? "#" : pathname + "?" + createQueryString("page", page + 1)}
             className={"p-0 w-8 h-8"}
           />
         </PaginationItem>

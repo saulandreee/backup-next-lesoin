@@ -2,15 +2,15 @@ import Head from "next/head";
 import React from "react";
 import { notFound } from "next/navigation";
 import { getSingleProduct } from "@/lib/products";
-import { getSingleProjectCategory } from "@/lib/projectCategories";
+import { getSingleCategory } from "@/lib/categories";
 
 export async function generateMetadata({ params }, parent) {
-  // read route params
-  const project_categories = await getSingleProjectCategory(params.slug);
+  const category = await getSingleCategory(undefined, params.slug);
+  // console.log(category);
 
-  if (!project_categories) return notFound();
+  if (!category) return notFound();
   return {
-    title: `Project Category: ${project_categories.name} | Le Soin`,
+    title: `Category: ${category.name} | Le Soin`,
   };
 }
 
