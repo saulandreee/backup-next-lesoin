@@ -30,7 +30,7 @@ export default async function GetBlogCategories({ params, searchParams }) {
   return (
     <>
       <div className="py-20 bg-base-darkest-brown text-center">
-        <h1 className="font-marcellus text-stone-50 text-xl md:text-2xl lg:text-[32px]">Project Category: {category.name}</h1>
+        <h1 className="font-marcellus text-stone-50 text-2xl md:text-2xl lg:text-[32px]">Project Category: {category.name}</h1>
       </div>
       <div className="py-20 flex flex-col lg:flex-row gap-16 mx-auto max-w-[1200px] px-5">
         <div className="flex-1 ">

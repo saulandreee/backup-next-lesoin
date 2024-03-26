@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default async function Search({ params, searchParams }) {
   var data = await searchData(searchParams.q, ["title", "content"], true, searchParams.page || 1, 10);
-  console.log(data.pagination);
+  // console.log(data.pagination);
   const cookiesStore = cookies();
   var categories = JSON.parse(cookiesStore.get("categories")?.value || "{}");
   var projectCategories = JSON.parse(cookiesStore.get("project_categories")?.value || "{}");
@@ -26,7 +26,7 @@ export default async function Search({ params, searchParams }) {
   return (
     <>
       <div className="py-20 bg-base-darkest-brown text-center">
-        <h1 className="font-marcellus text-stone-50 text-xl md:text-2xl lg:text-[32px]">
+        <h1 className="font-marcellus text-stone-50 text-2xl md:text-2xl lg:text-[32px]">
           {data.pagination.total_items} search result for: {searchParams.q}
         </h1>
       </div>
