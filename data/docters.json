@@ -152,6 +152,57 @@
   },
 
   {
+    "id": 15,
+    "name": "Selvy",
+    "title": "Ners",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/olive.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Sarah",
+    "title": "Apoteker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
+    "image": "/images/desktop/docter/sarah.webp",
+    "links": [
+      {
+        "type": "instagram",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "facebook",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "linkedin",
+        "link": "https://instagram.com/lesoin.id"
+      },
+      {
+        "type": "twitter",
+        "link": "https://instagram.com/lesoin.id"
+      }
+    ]
+  },
+
+  {
     "id": 7,
     "name": "Aluh",
     "title": "Therapist",
@@ -282,31 +333,6 @@
     "title": "Therapist",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
     "image": "/images/desktop/docter/riyanti.webp",
-    "links": [
-      {
-        "type": "instagram",
-        "link": "https://instagram.com/lesoin.id"
-      },
-      {
-        "type": "facebook",
-        "link": "https://instagram.com/lesoin.id"
-      },
-      {
-        "type": "linkedin",
-        "link": "https://instagram.com/lesoin.id"
-      },
-      {
-        "type": "twitter",
-        "link": "https://instagram.com/lesoin.id"
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "name": "Sarah",
-    "title": "Therapist",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis semper tortor.",
-    "image": "/images/desktop/docter/sarah.webp",
     "links": [
       {
         "type": "instagram",

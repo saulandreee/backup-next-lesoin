@@ -13,6 +13,7 @@ export default function SearchDataCard({ data }) {
           quality={100}
           priority
           loading="eager"
+          alt={`${data.type}-image`}
         />
       </div>
       <div className="flex-1 pb-4 lg:pb-0">

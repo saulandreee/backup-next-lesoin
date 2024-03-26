@@ -50,6 +50,8 @@ export default async function BlogPage({ params }) {
                 quality={100}
                 className="object-cover"
                 alt={"header-blog"}
+                priority
+                loading="eager"
               />
             </div>
             <div className="w-full bg-white px-4 lg:px-14 pt-12 lg:pt-16 pb-12 lg:pb-20 mb-8 lg:mb-16">

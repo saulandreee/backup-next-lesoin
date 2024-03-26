@@ -77,7 +77,7 @@ export default function BlogSidebar({ initCategories, initProjectCategories }) {
         </form>
       </Form>
       <div className="mb-8">
-        <h4 className="uppercase tracking-[3px] text-karla text-sm border-b border-b-base-brown/30 inline-block pb-2.5 mb-4">Categories</h4>
+        <h3 className="uppercase tracking-[3px] text-karla text-sm border-b border-b-base-brown/30 inline-block pb-2.5 mb-4">Categories</h3>
         <div className="grid gap-2.5">
           {Object.keys(categories).map((category, category_index) => {
             var categoryObject = categories[category];
@@ -95,7 +95,7 @@ export default function BlogSidebar({ initCategories, initProjectCategories }) {
         </div>
       </div>
       <div className="">
-        <h4 className="uppercase tracking-[3px] text-karla text-sm border-b border-b-base-brown/30 inline-block pb-2.5 mb-4">Project Categories</h4>
+        <h3 className="uppercase tracking-[3px] text-karla text-sm border-b border-b-base-brown/30 inline-block pb-2.5 mb-4">Project Categories</h3>
         <div className="grid gap-2.5">
           {Object.keys(projectCategories).map((category, category_index) => {
             var categoryObject = projectCategories[category];

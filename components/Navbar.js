@@ -557,7 +557,7 @@ export default function Navbar() {
                 >
                   {navigation.treatment.text}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="left-1/2 -translate-x-1/2">
+                <NavigationMenuContent className="lg:left-1/3 xl:left-1/2 lg:-translate-x-1/2">
                   <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[800px] lg:grid-cols-3 bg-base-brown rounded">
                     {navigation.treatment.child.map((treatment_child, index) => {
                       return (

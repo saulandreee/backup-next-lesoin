@@ -11,9 +11,11 @@ export default function NewsCard({ news }) {
       <div className=" relative w-full aspect-[3/2]">
         <Image
           src={news.image}
-          fill
+          // fill
+          width={450}
+          height={300}
           quality={100}
-          className="object-cover w-full"
+          className="object-cover h-full"
           alt="news-image"
         />
         <div className="absolute top-4 left-4 p-2 px-4 bg-base-dark uppercase font-karla tracking-[2px] text-xs text-stone-50">

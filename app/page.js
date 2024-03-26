@@ -55,6 +55,7 @@ export default async function Home() {
                     className="px-2 object-cover w-full md:hidden"
                     alt="header-image"
                     priority
+                    loading="eager"
                   />
                   <Image
                     src={"/images/desktop/landing/header-2.webp"}
@@ -63,6 +64,7 @@ export default async function Home() {
                     className="px-2 object-cover w-full hidden md:inline-block"
                     alt="header-image"
                     priority
+                    loading="eager"
                   />
                 </div>
 
@@ -208,7 +210,6 @@ export default async function Home() {
             fill
             src={"/images/mobile/treatment-room.webp"}
             className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto md:hidden"
-            sizes="(min-width: 768px) 600px, (min-width: ) 750px"
             alt="treatment-room"
           />
           <Image
@@ -216,7 +217,7 @@ export default async function Home() {
             fill
             src={"/images/desktop/landing/treatment-room.webp"}
             className="object-cover w-full lg:w-auto h-full xl:w-full xl:h-auto hidden md:inline-block"
-            sizes="(min-width: 768px) 600px, (min-width: 1024px) 800"
+            sizes="(min-width: 768px) 600px, (min-width: 1024px) 800px"
             alt="treatment-room"
           />
         </div>
