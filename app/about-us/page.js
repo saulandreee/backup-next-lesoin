@@ -108,13 +108,13 @@ export default async function About() {
         </h1>
         <div className="grid gap-6 gap-y-6 md:grid-cols-2 xl:grid-cols-4 justify-center">
           {listDocter.map((docter, index) => {
-            console.log(docter.links);
+            // console.log(docter.links);
             return (
               <div
                 className="shadow"
                 key={index}
               >
-                <div className="relative max-w-[400px] mx-auto aspect-[4/2.5] mb-6 ">
+                <div className="relative max-w-[400px] mx-auto aspect-[3/2] mb-6 ">
                   <Image
                     src={docter.image}
                     fill
@@ -127,7 +127,7 @@ export default async function About() {
                   <p className="text-center font-marcellus text-[18px] text-base-dark-brown mb-1">{docter.name}</p>
                   <p className="text-xs font-karla uppercase text-center mb-6 tracking-[3px]">{docter.title}</p>
                   <p className="text-center font-roboto text-base-brown mb-6">{docter.description}</p>
-                  <div className="flex gap-2.5 justify-center">
+                  <div className="flex gap-2.5 justify-center mb-2">
                     {docter.links.map((medsos, medsos_index) => (
                       <MedsosLinkIcon
                         key={medsos_index}
