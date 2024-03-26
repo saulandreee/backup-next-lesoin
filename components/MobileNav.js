@@ -59,6 +59,7 @@ export default function MobileNav({ navigation }) {
               <Button
                 asChild="svg"
                 variant="ghost"
+                name="menu-trigger"
                 size="icon"
                 className="focus-within:bg-base-dark-brown/50 focus:bg-base-dark-brown/50 active:bg-base-dark-brown/50 rounded p-2"
               >

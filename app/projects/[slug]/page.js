@@ -44,17 +44,19 @@ export default async function page({ params }) {
     <>
       <div className="py-12 lg:py-20">
         {/* <div className="">{project.title}</div> */}
-        <div>
-          <Image
-            src={project.image}
-            width={1200}
-            height={600}
-            quality={100}
-            alt={`${slug}-img`}
-            loading="eager"
-            sizes="(min-width: 640px) 80%, "
-            priority
-          />
+        <div className="">
+          <div className="relative w-full aspect-[16/10]">
+            <Image
+              src={project.image}
+              fill
+              quality={100}
+              className="object-cover w-full"
+              alt={`${slug}-img`}
+              loading="eager"
+              sizes="(min-width: 768px) 600px, (min-width: 1024px) 1000px"
+              priority
+            />
+          </div>
 
           <div className="w-full bg-white px-4 lg:px-14 pt-12 lg:pt-16 pb-12 lg:pb-20 mb-8 lg:mb-16">
             <h1 className="text-3xl font-marcellus text-center text-base-brown mb-8">{project.title}</h1>
@@ -87,6 +89,7 @@ export default async function page({ params }) {
                 className="flex gap-4 group"
               >
                 <Button
+                  name="prev-button"
                   size="icon"
                   variant="secondary"
                   className="w-8 h-full bg-white shrink-0"
@@ -119,6 +122,7 @@ export default async function page({ params }) {
                   <p className="capitalize font-marcellus">{project.next.title}</p>
                 </div>
                 <Button
+                  name="next-button"
                   size="icon"
                   variant="secondary"
                   className="w-8 h-full bg-white shrink-0"

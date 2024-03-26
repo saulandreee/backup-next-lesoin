@@ -40,6 +40,7 @@ export default function Footer() {
           <Button
             size="icon"
             variant="ghost"
+            name="lesoin-instagram-link"
           >
             <Instagram />
           </Button>

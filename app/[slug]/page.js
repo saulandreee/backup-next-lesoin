@@ -77,6 +77,7 @@ export default async function BlogPage({ params }) {
                 className="flex gap-4 group"
               >
                 <Button
+                  name="prev-button"
                   size="icon"
                   variant="secondary"
                   className="w-8 h-full bg-white shrink-0"
@@ -109,6 +110,7 @@ export default async function BlogPage({ params }) {
                   <p className="capitalize font-marcellus">{blog.next.title}</p>
                 </div>
                 <Button
+                  name="next-button"
                   size="icon"
                   variant="secondary"
                   className="w-8 h-full bg-white shrink-0"

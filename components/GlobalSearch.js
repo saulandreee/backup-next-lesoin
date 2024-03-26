@@ -46,6 +46,7 @@ export default function GlobalSearch() {
       >
         <Button
           size="icon"
+          name="search-button"
           variant="ghost"
           className="text-stone-50 w-6 h-6"
           onClick={() => setOpen(true)}

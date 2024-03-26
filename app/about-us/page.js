@@ -81,19 +81,19 @@ export default async function About() {
           }}
           className="h-full"
         >
-          <CarouselContent className="w-full -ml-4">
+          <CarouselContent className="w-full md:-ml-4">
             {[...Array(5)].map((_, index) => {
               return (
                 <CarouselItem
                   key={index}
-                  className="relative h-[200px] md:h-[320px] lg:h-[450px] pl-4"
+                  className="relative h-[200px] md:h-[320px] lg:h-[450px] aspect-[16/9] md:pl-4"
                 >
                   <Image
                     src={`/images/desktop/about/about_us${index + 1}.webp`}
                     fill
                     quality={100}
-                    className="object-contain w-full"
-                    sizes="(min-width: 768px) 600px, (min-width: 1024px) 960px, (min-width: 1280px) 1200px"
+                    className="object-cover w-full"
+                    sizes="(min-width: 768px) 600px, (min-width: 1024px) 1200px"
                     alt={`lesoin-clinic-${index + 1}`}
                   />
                 </CarouselItem>
